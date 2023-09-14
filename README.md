@@ -17,7 +17,7 @@ The original requirements can be found [here](/requirements/original.pdf)
 **[1. About us](#about-us)**
 
 **[2. Problem Statement](#problem-background)**
-* [2.1. Hey, Blue! Vision](#hey-blue-vision)
+* [2.1. Vision](#the-vision)
 * [2.2. Requirements](#requirements)
 * [2.3. Actors Overview](#actors-overview)
 
@@ -196,14 +196,14 @@ a microservice architecture: [Connection](domain/connection-capability.md), [Ord
 The following diagram gives a high-level overview of how the capabilities interact with each other. An in-depth explanation of how each capability works internally
 and what their responsibilities are, is shown in the section up next.
 <p align="center">
-<img width="900" src="domain/resources/hey-blue-capabilities-overview.drawio.svg">
+<img width="900" src="domain/resources/capabilities-overview.drawio.svg">
 </p>
 
 
 ### Legend
 For all of the above, if not stated otherwise in the diagram at hand, the symbols reflect the meaning as described in the following legend.
 <p align="center">
-<img width="700" src="domain/resources/hey-blue-legend.drawio.svg">
+<img width="700" src="domain/resources/drawio.svg">
 </p>
 
 ## System Architecture
@@ -215,7 +215,7 @@ The main principle we decided to adhere to
 
 ### Approach
 We used a [domain-driven approach](#domain-design) to define our [service landscape](#domain-capabilities) for the 
-**Hey, Blue!** ecosystem. With those capabilities at hand, we finally propose a cloud-native software solution that can 
+**XXX** ecosystem. With those capabilities at hand, we finally propose a cloud-native software solution that can 
 cope with the [requirements](#requirements) and is feasible to implement for an ambitious startup corporation. 
 The design embraces [DevOps](https://en.wikipedia.org/wiki/DevOps), [GitOps](https://www.redhat.com/de/topics/devops/what-is-gitops) and 
 [Zero Trust](https://en.wikipedia.org/wiki/Zero_trust_security_model) principles as first 
@@ -242,7 +242,7 @@ This summary provides an overview of the ADRs we refer to in the appropriate sec
 - [2022-11-08 ADR08 GDPR Compliance](ADRs/2022-11-08_08-GDPR-compliance.md)
 
 ## Acknowledgements
-We would like to thank the team behind the O'Reilly Architectural Katas and the judges for their effort in making this instructive and fun event possible. Next, we would like to thank the team of Hey, Blue! for presenting such an interesting challenge with real-world usage and positive impact for society. Finally, we would like to thank our employer, Innovation Process Technology, for giving us the opportunity to participate in this challenge and working on our architectural skills. It's been one hell of a ride.
+We would like to thank the team behind the O'Reilly Architectural Katas and the judges for their effort in making this instructive and fun event possible. Next, we would like to thank the team of XXXX for presenting such an interesting challenge with real-world usage and positive impact for society. Finally, we would like to thank our employer, Innovation Process Technology, for giving us the opportunity to participate in this challenge and working on our architectural skills. It's been one hell of a ride.
 
 <p align="center">
 <img width="600" src="context/resources/oreilly-archi-kata-fall-2022-team-ipt.svg">
