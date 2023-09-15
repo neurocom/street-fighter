@@ -1,11 +1,4 @@
 # Email Receiver Quantum
-The connection capability enables civilians and officers to connect through the **Hey, Blue!** ecosystem. The following capabilities are provided by this capability.
-- Civilians can look up officers who agreed/configured on their site to be found by search. In that case an officer opted in for look-up.
-- Civilians and officers might connect via QR code or the previously described online look-up. The processes are clearly defined and supported by a notification infrastructure based on messaging.
-- Civilians are being rewarded **Hey, Blue!** points when successfully connecting with officers.
-- Officers are being rewarded **Hey, Blue!** points when successfully connecting with civilians.
-- When connecting via QR code, a proximity matching service verifies proximity of the participants by assessing a history of geospatial data.
-- Civilians might share their connection with social media platforms.
 
 The following diagram describes the architecture for the Email Receiver in detail.
 <p align="center">
@@ -24,13 +17,15 @@ The following diagram describes the architecture for the Email Receiver in detai
 
 ### Mail Filtering
 - Monitors the mail queue for new email messages fetched by the Mail Receiver.
-- Implements a filtering mechanism that checks incoming emails against a whitelist with the email addresses of the most popular travel agencies (airlines, hotels, car rentals) provided by the system and a user's configured list of email addresses. It also utilizes NLP libraries (e.g., Apache OpenNLP, StanfordNLP) to extract relevant information from the email content and filter out non travel related emails. We also considered a functionality where the user will use a Road Warrior domain email for all the travel related communications. In this scenario all the incoming emails will be routed to the Mail Parsing and forwarded to the personal emails of the user. This solution will increase privacy, since non travel related emails will not be available to the system. 
+- Implements a filtering mechanism that checks incoming emails against a whitelist with the email addresses of the most popular travel agencies (airlines, hotels, car rentals) provided by the system and a user's configured list of email addresses. 
+- Utilizes NLP libraries (e.g., Apache OpenNLP, StanfordNLP) to extract relevant information from the email content and filter out non travel related emails. 
+- We also considered a functionality where the user will use a Road Warrior domain email for all the travel related communications. In this scenario all the incoming emails will be routed to the Mail Parsing and forwarded to the personal emails of the user. This solution will increase privacy, since non travel related emails will not be available to the system. 
 - The Mail Filtering component will be implemented as a serverless Lambda function. Serverless is suitable for this component because it responds to individual email events, requires auto-scaling, and can leverage event-driven triggers.
 
 
 ### Mail Parsing
--Analyzes its content to identify reservation-related information.
--Utilizes regular expressions, Natural Language Processing (NLP) techniques, or custom parsing rules to extract relevant data. 
+- Analyzes its content to identify reservation-related information.
+- Utilizes regular expressions, Natural Language Processing (NLP) techniques, or custom parsing rules to extract relevant data. 
 - Converts extracted data into a structured format (e.g., JSON or XML) that can be easily processed and queued for further processing. 
 - The Mail Parsing component will also be implemented as a serverless Lambda function. Serverless is appropriate because it provides on-demand processing for parsing individual emails and allows auto-scaling based on the volume of incoming emails.
 
