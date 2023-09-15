@@ -1,4 +1,4 @@
-# Servless and Containers
+# External API interface integration
 
 ## Decision:
 
@@ -7,4 +7,3 @@
 ## Cons:
 
 ## Justification:
-
