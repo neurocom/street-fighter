@@ -24,7 +24,7 @@ The following diagram describes the architecture for the Email Receiver in detai
 
 
 ### Mail Parsing
-- Analyzes its content to identify reservation-related information.
+- Analyzes the content of the filtered emails to identify reservation-related information.
 - Utilizes regular expressions, Natural Language Processing (NLP) techniques, or custom parsing rules to extract relevant data. 
 - Converts extracted data into a structured format (e.g., JSON or XML) that can be easily processed and queued for further processing. 
 - The Mail Parsing component will also be implemented as a serverless Lambda function. Serverless is appropriate because it provides on-demand processing for parsing individual emails and allows auto-scaling based on the volume of incoming emails.
