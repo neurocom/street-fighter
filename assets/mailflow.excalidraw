@@ -2030,8 +2030,8 @@
     },
     {
       "type": "line",
-      "version": 257,
-      "versionNonce": 1973536926,
+      "version": 305,
+      "versionNonce": 1001459614,
       "isDeleted": false,
       "id": "txTZyJiIHU1BgU-ttjVTH",
       "fillStyle": "hachure",
@@ -2044,8 +2044,8 @@
       "y": -29.957886402828194,
       "strokeColor": "#2f9e44",
       "backgroundColor": "#b2f2bb",
-      "width": 10.870316316509843,
-      "height": 818.3795284001017,
+      "width": 7.2261646138338165,
+      "height": 835.6285131261016,
       "seed": 1423254238,
       "groupIds": [],
       "frameId": null,
@@ -2053,7 +2053,7 @@
         "type": 2
       },
       "boundElements": [],
-      "updated": 1694775302747,
+      "updated": 1694780278365,
       "link": null,
       "locked": false,
       "startBinding": null,
@@ -2067,8 +2067,8 @@
           0
         ],
         [
-          10.870316316509843,
-          818.3795284001017
+          7.2261646138338165,
+          835.6285131261016
         ]
       ]
     },
@@ -2108,8 +2108,8 @@
     },
     {
       "type": "line",
-      "version": 163,
-      "versionNonce": 635110622,
+      "version": 202,
+      "versionNonce": 104243038,
       "isDeleted": false,
       "id": "2Eb-OsbKFXc6lKpBtQa7b",
       "fillStyle": "hachure",
@@ -2122,8 +2122,8 @@
       "y": 816.3738839540131,
       "strokeColor": "#2f9e44",
       "backgroundColor": "#a5d8ff",
-      "width": 942.6117148745002,
-      "height": 7.764511654649823,
+      "width": 1390.9450482078332,
+      "height": 11.09784498798308,
       "seed": 1771517342,
       "groupIds": [],
       "frameId": null,
@@ -2131,7 +2131,7 @@
         "type": 2
       },
       "boundElements": [],
-      "updated": 1694775302747,
+      "updated": 1694780269731,
       "link": null,
       "locked": false,
       "startBinding": null,
@@ -2145,8 +2145,8 @@
           0
         ],
         [
-          942.6117148745002,
-          -7.764511654649823
+          1390.9450482078332,
+          -11.09784498798308
         ]
       ]
     },
