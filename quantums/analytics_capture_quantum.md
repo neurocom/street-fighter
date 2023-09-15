@@ -11,8 +11,6 @@ The following diagram describes the architecture for the Analytics Capture in de
 <img width="1000" src="../assets/analytics.svg">
 </p>
 
-
-
 ## Components
 
 ### (De)Anonymizer
@@ -40,7 +38,5 @@ The following diagram describes the architecture for the Analytics Capture in de
 Traffic events and reservation events are loaded asynchronously to the OLAP DB database. Information from external sources is smaller in volume, updated less frequently and is loaded synchronously. All report requests are retrieved synchronously by the reporting services.
 
 ## Related ADRs
-- [ADR01 Microservice Architecture](../adrs/microservice-architecture.md)
-- [ADR02 Event-Driven Design](../adrs/event-driven-design.md)
-- [ADR08 GDPR](../adrs/gdpr.md)
+- [ADR08 Analytics OLAP](../adrs/analytics.md)
 
