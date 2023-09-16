@@ -35,6 +35,8 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
 </td>
 <td valign="top" style="vertical-align:top">
 
+**[5. Deployment](#deployment)**
+
 **[6. ADRs](#adrs)**
 * [ADR01 Hybrid Architecture](adrs/hybrid.md)
 * [ADR02 API-Gateway](adrs/api-gateway.md)
@@ -51,6 +53,7 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
 * [ADR13 Deploy Options](adrs/deploy-options.md)
 * [ADR14 Availability Deploy Concerns](adrs/availability-deploy-concerns.md)
 * [ADR15 Monitoring](adrs/monitoring.md)
+* [ADR16 Mail Polling](adrs/mail_polling.md)
 
     </td>
  </tr>
@@ -180,9 +183,7 @@ Based on the characteristics identified, and using the provided template, we cam
 
 ![Architecture Selector](assets/architecture-style-selector.png)
 
-We decided to select the event-driven architecture because it both scores well in most of our characteristics and fits well with asynchronous processing which we think is central to our application. 
-
-TODO: Link to  system wide ADR
+We decided to select a [hybrid microservices event-driven architecture](adrs/hybrid.md) because it both scores well in most of our characteristics and fits well with asynchronous processing which we think is central to our application. 
 
 [Back to Contents](#contents)
 
@@ -277,3 +278,17 @@ We identified the top architectural characteristics of this quantum to be the fo
 [Analytics Capture Quantum Details](quanta/analytics_capture_quantum.md)
 
 [Back to Contents](#contents)
+
+## Deployment
+
+Deploying our system using containerized applications or serverless functions  offers a flexible and efficient
+approach to streamline application deployment process ([ADR13 Deploy Options](adrs/deploy-options.md)).
+
+Kubernetes has become increasingly popular due to the numerous benefits it offers
+for managing containerized workloads in a scalable, resilient, and automated manner.
+It becomes an even more attractive choice for our system since we can setup and utilize a service mesh (e.g. Istio)
+which complements container orchestration handling of Kubernetes by addressing service-to-service communication,
+security, and observability challenges ([ADR15 Monitoring](adrs/monitoring.md))
+
+Finally, it makes sense to utilize a managed Kubernetes service to run Kubernetes in the cloud and on-premises data centers
+in hybrid fashion to reduce costs, but also to achieve geographical distribution and enhanced availability ([ADR14 Availability Deploy Concerns](adrs/availability-deploy-concerns.md))

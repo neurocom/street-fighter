@@ -48,4 +48,5 @@ Hybrid: Microservices - Event Driven Architecture
 
 ## Related ADRs
 - [ADR01 Hybrid Architecture](../adrs/hybrid.md)
+- [ADR16 Mail Polling](../adrs/mail_polling.md)
 
