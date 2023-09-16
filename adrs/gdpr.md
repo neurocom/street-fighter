@@ -2,7 +2,7 @@
 
 The service processes personal data as part of our operations. Having an international userbase, we are committed to complying with the General Data Protection Regulation (GDPR) to ensure the privacy and data protection rights of individuals. This decision outlines the architectural considerations and measures to achieve GDPR compliance in our data processing activities.
 
-## Decision:
+## Decision
 
 We will implement a comprehensive set of GDPR compliance measures in our data architecture, including the following key components:
 
@@ -18,10 +18,10 @@ We will implement a comprehensive set of GDPR compliance measures in our data ar
 - Privacy by Design and Default: Privacy considerations will be integrated into our system development processes, following the principles of privacy by design and default. This means that data protection will be considered at every stage of system development.
 - Data Protection Officer (DPO): We will designate a Data Protection Officer responsible for ensuring GDPR compliance and providing guidance on privacy matters within the organization.
 
-## Risks and Mitigations:
+## Risks and Mitigations
 
 - Complexity: Implementing GDPR compliance measures can introduce complexity into our systems. We will mitigate this risk by carefully documenting and automating compliance processes where possible.
 - Resource Requirements: GDPR compliance efforts may require additional resources. We will allocate resources, budget, and training to ensure compliance is achievable and sustainable.
 
-## Conclusion:
+## Conclusion
 Ensuring GDPR compliance in our data processing activities is not only a legal requirement but also a commitment to safeguarding individuals' privacy rights. By incorporating these GDPR compliance measures into our data architecture, we demonstrate our dedication to data protection and privacy, reducing the risk of legal penalties and reputational damage while building trust with our customers and users.

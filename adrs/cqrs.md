@@ -1,6 +1,6 @@
 # CQRS
 
-## Decision:
+## Decision
 
 Command Query Responsibility Segregation (CQRS) is an architectural pattern that separates 
 the read and write sides of an application's data model. This pattern can provide several advantages, 
@@ -9,7 +9,7 @@ but it also introduces complexities and challenges.
 Command Query Responsibility Segregation (CQRS) is an architectural pattern that separates the read and write sides 
 of an application's data model. 
 
-## Pros:
+## Pros
 
 - Optimizing a database with high load of Read and Update operations, by splitting command and query 
 concerns.  This can lead to improved performance and responsiveness, as write operations do not 
@@ -22,7 +22,7 @@ and resource utilization (Scalability)
 allowing for more flexibility in designing the data structures and relationships to meet the specific needs of each 
 side especially for complex or frequently accessed data (extensibility)
 
-## Cons :
+## Cons
 
 - Implementing CQRS introduces additional complexity to the application. Developers need to 
 manage the communication between the read and write sides (complexity). Ensuring data consistency 
@@ -38,7 +38,7 @@ Applying CQRS to a straightforward CRUD application can lead to unnecessary comp
 
 - Increased inherent cost either in terms of hardware or if a cloud provider is used utilization expense (cost)
 
-## Justification:
+## Justification
 
 Concurrent operations to the same records or tables contend with each other making all operations slow. Essentially
 you can optimize a database only for one type of operation at the expense of the other. All write operations that 
