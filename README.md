@@ -18,14 +18,14 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
 
 **[3. Domain Design](#domain-design)**
 * [3.1. Actors and Use Cases](#use-cases)
-* [3.2. Quantum Identification](#quantum-identification)
+* [3.2. Quanta Identification](#quanta-identification)
 
-**[4. System Architecture](#system-architecture)**
+**[4. Architecture](#architecture)**
 * [4.1. System-wide architecture](#system-wide-architecture)
     * [4.1.1. Drivers](#drivers)
-    * [4.1.2. Architecture Characteristics](#architecture-characteristics)
+    * [4.1.2. System-wide Architecture Characteristics](#system-wide-architecture-characteristics)
     * [4.1.3. Selected architecture](#selected-architecture)
-* [4.2. Quantum Architectures](#quantum-architectures)
+* [4.2. Quanta and Related Architectures](#quanta-and-related-architectures)
     * [4.2.1. User Interaction Quantum](quanta/user_interaction_quantum.md)
     * [4.2.2 Travel Notifications Receiver](quanta/travel_updates_receiver_quantum.md)
     * [4.2.4 Email Receiver](quanta/email_receiver_quantum.md)
@@ -87,17 +87,17 @@ Keep in mind the vision and consider how the platform will embrace trains, buses
 
 The identified actors and use cases appear in the following diagram
 
-![Use Case Diagram](general/use-case-diagram.png)
+![Use Case Diagram](assets/use-case-diagram.png)
 
 Which led to the identification of the initial building blocks of the system
 
-![Building Blocks](general/overview_diagram.drawio.png)
+![Building Blocks](assets/overview_diagram.drawio.png)
 
 [Back to Contents](#contents)
 
-## Quantum Identification
+## Quanta Identification
 
-We considered in our early discussions that there are several parts in the application that should exhibit different characteristics (please see also [below](#system-architecture)).
+We considered in our early discussions that there are parts in the system that should exhibit different characteristics (please see also [below](#architecture)).
 
 Based on this observation and the initial building blocks, we utilized the quantum concept (https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch07.html#sec-quantum-def) during our analysis to identify the different parts of the platform that serve different needs and demonstrate those characteristics.
 
@@ -107,6 +107,7 @@ This the final list along with each quantum responsibilities
   * Interact with the user (display dashboard, receive commands etc.)
   * Capture analytics metrics
   * Push notifications
+  * Share content to social media via related APIs
 * Travel Updates Receiver
   * Connect with travel agent and travel systems
   * Receive notifications and filter the ones associated with active reservations
@@ -126,9 +127,9 @@ This the final list along with each quantum responsibilities
 
 [Back to Contents](#contents)
 
-# System Architecture
+# Architecture
 
-## Overall Architecture
+## System-Wide Architecture
 
 ### Drivers
 
@@ -157,7 +158,7 @@ Email parsing, if we consider the 'share your mailbox approach' is much more cha
 
 [Back to Contents](#contents)
 
-### Overall Architecture Characteristics
+### System-Wide Architecture Characteristics
 
 Given the above we have identified the following top three architecture characteristics:
 
@@ -186,9 +187,10 @@ TODO: Link to  system wide ADR
 
 [Back to Contents](#contents)
 
-## Quanta Architectures
+### System-wide Architectural Diagram
 
-Note: Critical path 5 min - Availability + End to end performance.
+
+## Quanta and Related Architectures
 
 We then focused on each quantum and discussed the characteristics that it should demonstrate. Here is what we came up with:
 
