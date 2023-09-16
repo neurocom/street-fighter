@@ -71,34 +71,41 @@ Keep in mind the vision and consider how the platform will embrace trains, buses
 
 The identified actors and use cases appear in the following diagram
 
-We grouped our understanding of the requirements for the **Road Warrior** platform into the following two sections.
-- [Functional requirements](requirements/functional-requirements.md)
-- [Architecture Characteristics Drivers](requirements/drivers.md)
+![Use Case Diagram](general/use-case-diagram.svg)
 
+Which led to the identification of the initial building blocks of the system
 
-[Back to Contents](#contents)
-
-### Things considered, but out of scope
-
-For this iteration we decided to consider out of scope
-* the capabilities to allow Road Warrior to monetize its service and analytical data.
-* Trip access provider
-* deployment platform options
+![Building Blocks](general/overview_diagram.drawio.svg)
 
 [Back to Contents](#contents)
 
 ## Quantum Identification
 
-We utilized the quantum concept (https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch07.html#sec-quantum-def) during our analysis to identify the different parts of the platform that serve different needs and demonstrate possibly different characteristics.
+Based on the initial building blocks, we then utilized the quantum concept (https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch07.html#sec-quantum-def) during our analysis to identify the different parts of the platform that serve different needs and demonstrate possibly different characteristics.
 
-Our initial point was the following diagram(exploration/interactions.md):
+This the final list along with each quantum responsibilities 
 
 * User Interaction Quantum
-* Travel Notifications Receiver
+  * Interact with the user (display dashboard, receive commands etc.)
+  * Capture analytics metrics
+  * Push notifications
+* Travel Updates Receiver
+  * Connect with travel agent and travel systems
+  * Receive notifications and filter the ones associated with active reservations
+  * Translate notifications to the system internal format and push them to the reservation orchestrator
 * Email Receiver
+  * Connect to our email server and poll for forwarded reservations
+  * Connect to user mailboxes and filter out travel related emails (reservation + updates)
+  * Translate message information to the system internal fomat and push them to reservation orchestrator
 * Reservation Orchestrator
+  * Receive user requests from the user interaction quantum and return relevant information
+  * Receive user commands from the user interaction quantum and update trip accordingly
+  * Receive messages from travel notifications and email receivers and update trip accordingly
 * Analytics Capture
-* (SHOULD WE SEPARATE ANALYTICS COLLECTION FROM YEARLY REPORTS? THEY DO SEPARATE JOBS) => Activity Summarizer
+  * Collect analytics data from user interaction, email receiver and travel update receiver quantums and store them for analysis
+  * Anonymize data for use with analytics consumers ???and provide them through a dedicated API??? HOW?
+  * Prepare yearly reports and push them to end users through the user interaction quantum
+* (SHOULD WE SEPARATE ANALYTICS COLLECTION FROM YEARLY REPORTS? THEY DO SEPARATE JOBS - ALSO DO WE NEED A SE) => Activity Summarizer
 
 [Back to Contents](#contents)
 
