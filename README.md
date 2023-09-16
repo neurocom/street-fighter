@@ -54,6 +54,7 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
 * [ADR12 GDPR](adrs/gdpr.md)
 * [ADR13 Deploy Options](adrs/deploy-options.md)
 * [ADR14 Availability Deploy Concerns](adrs/availability-deploy-concerns.md)
+* [ADR15 Monitoring](adrs/monitoring.md)
 
     </td>
  </tr>
