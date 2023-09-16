@@ -225,17 +225,9 @@ Architectural Style: Hybrid: Microservices - Event Driven Architecture
 
 [View Details](quanta/email_receiver_quantum.md)
 
-#### Reservations Orchestrator
- Data Consistency: To provide accurate and up to date information to the user.
- Availability: Because it is the central component in the 'critical path' of the user's experience.
-
-Architectural Style: Service Oriented?
-
-[View Details](quanta/reservation-orchestrator-quantum.md)
-
 #### Analytics Capture
 - Deployability: To accomodate processing of new information and constantly adding report functionality
-- Configurability: To allow internationalization, different currencies . etc.
+- Configurability: To allow internationalization, different currencies etc.
 
 Architectural Style: Service Oriented
 
