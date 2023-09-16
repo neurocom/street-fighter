@@ -48,7 +48,7 @@ Stateless module that handles the delivery of notification through multiple noti
 Please refer to [Reservation API](user_interaction_quantum.md#reservation-api)
 
 ## Related ADRs
-- [ADR01 External-API-Integration](../adrs/external-api-integration.md)
-- [ADR02 CQRS](../adrs/cqrs.md)
-- [ADR03 Message Broker](../adrs/message-broker.md)
-- [ADR04 Specialized DBs](../adrs/specialized-dbs.md)
+- [ADR07 External-API-Integration](../adrs/external-api-integration.md)
+- [ADR08 CQRS](../adrs/cqrs.md)
+- [ADR09 Message Broker](../adrs/message-broker.md)
+- [ADR10 Specialized DBs](../adrs/specialized-dbs.md)
