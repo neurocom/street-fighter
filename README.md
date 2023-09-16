@@ -80,7 +80,7 @@ Which led to the identification of the initial building blocks of the system
 
 ## Quanta Identification
 
-We utilized the quantum concept (https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch07.html#sec-quantum-def) during our analysis to identify parts of the system that serve different needs and demonstrate different characteristics.
+We utilized the [quantum concept](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch07.html#sec-quantum-def) during our analysis to identify parts of the system that serve different needs and demonstrate different characteristics.
 
 This is the final list along with each quantum responsibilities 
 
