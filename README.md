@@ -5,10 +5,7 @@ This repository is our solution to the Fall 2023 [O'Reilly Architectural Katas C
 
 The goal of the challenge is to enable Road Warrior, a startup aspiring to be a single source of truth for all things related to the trips of its users, to meet its objective.
 
-The original requirements can be found [here](/requirements/original.pdf)
-
-## Content
-<center>
+## Contents
 <table border="0">
 
  <tr style="vertical-align:top">
@@ -22,30 +19,34 @@ The original requirements can be found [here](/requirements/original.pdf)
 
 **[3. Domain Design](#domain-design)**
 * [3.1. Actors and Use Cases](#use-cases)
-* [3.2. Quantum Identification](#)
+* [3.2. Quantum Identification](#quantum-identification)
 
 **[4. System Architecture](#system-architecture)**
-* [4.1. System-wide architecture characteristics](azure/resources/cloud-architecture.md)
-* [4.2. Overall Architecture](azure/resources/cloud-architecture.md)
-* ??????? OVERALL ARCHITECTURE ADR????????????
-* [4.3. Per Quantum Architecture]
-* [4.3.1. User Interaction Quantum]()
-* [4.3.2 Travel Notification Receiver]()
-* [4.3.4 Email Receiver]()
-* [4.3.5 Reservation Orchestrator]()
-* [4.3.6 Analytics Collector]()
-* [4.3.7 Activity Summarizer]()
+* [4.1. System-wide architecture](#system-wide-architecture)
+    * [4.1.1. Drivers](#drivers)
+    * [4.1.2. Architecture Characteristics](#architecture-characteristics)
+    * [4.1.3. Selected architecture](#selected-architecture)
+* [4.2. Quantum Architectures](#quantum-architectures)
+    * [4.2.1. User Interaction Quantum](quantums/user_interaction_quantum.md)
+    * [4.2.2 Travel Notifications Receiver](quantums/travel_notifications_receiver_quantum.md)
+    * [4.2.4 Email Receiver](quantums/email_receiver_quantum.md)
+    * [4.2.5 Reservation Orchestrator](quantums/reservation-orchestrator-quantum.md)
+    * [4.2.6 Analytics Capture](quantums/analytics_capture_quantum.md)
+* **** Analytics Collector Maybe *****?
+    * [4.2.7 Activity Summarizer](#activity-summarizer)
 
-
-**[6. Acknowledgements](#acknowledgements)**
+**[6. Sequence Diagrams](#sequence-diagrams)**
+* [6.1. Road warrior initiated CRUD](seq-diagrams/road-warrior-initiated-crud.svg)
+* [6.2 Notification Reception](seq-diagrams/notification-reception.svg)
+* [6.3 Yearly Report Generation](seq-diagrams/yearly-report-generation.svg)
     </td>
  </tr>
 </table>
-</center>
 
 ## About Us
 Our team consists of [Apostolos Mantes](https://www.linkedin.com/in/mantesap), [George Lourakis](https://www.linkedin.com/in/georgios-lourakis-099b79197), [George Panagiotakis](https://www.linkedin.com/in/yiorgos-panayiotakis-71185a5b), [Konstantinos Polydorou](htts://www.linkedin.com/in/kpolyd) and [Spyros Economopoulos](https://www.linkedin.com/in/economopoulos). We are members of [Neurocom SA](https://www.neurocom.gr), a greek company focusing mainly on the telecommunication sector, located in Greece.
 
+[Back to Contents](#contents)
 
 ## Challenge Overview
 
@@ -57,20 +58,25 @@ Be the single source of truth for all things trip related.
 
 At this stage focus on 
 * flights
-* hotels and 
+* hotels 
 * car rentals
 
 Keep in mind the vision and consider how the platform will embrace trains, buses, attractions etc. etc.
+
+[Back to Contents](#contents)
 
 # Domain Design
 
 ## Actors and Use Cases
 
+The identified actors and use cases appear in the following diagram
+
 We grouped our understanding of the requirements for the **Road Warrior** platform into the following two sections.
 - [Functional requirements](requirements/functional-requirements.md)
 - [Architecture Characteristics Drivers](requirements/drivers.md)
 
-## Quantum Identification
+
+[Back to Contents](#contents)
 
 ### Things considered, but out of scope
 
@@ -79,34 +85,80 @@ For this iteration we decided to consider out of scope
 * Trip access provider
 * deployment platform options
 
+[Back to Contents](#contents)
 
-### Actors 
-
-### Use Cases
-
-### Quantums
+## Quantum Identification
 
 We utilized the quantum concept (https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch07.html#sec-quantum-def) during our analysis to identify the different parts of the platform that serve different needs and demonstrate possibly different characteristics.
 
 Our initial point was the following diagram(exploration/interactions.md):
 
-* Email receiver
-* External agent gateway
-* Event deduplicator
-* Trip Ledger
-* GUI serving APIs
-* Web application 
-* Mobile (native) application
-* Social media gateway
-* Reporting service
-* Anaytics service
+* User Interaction Quantum
+* Travel Notifications Receiver
+* Email Receiver
+* Reservation Orchestrator
+* Analytics Capture
+* (SHOULD WE SEPARATE ANALYTICS COLLECTION FROM YEARLY REPORTS? THEY DO SEPARATE JOBS) => Activity Summarizer
+
+[Back to Contents](#contents)
+
+# System Architecture
+
+## Overall Architecture
 
 
-### Architecture Style (per Quantum)
+### Drivers
 
-We then focused on each quantum and discussed the characteristics that it should demonstrate. Here is what we came up with:
+[Back to Contents](#contents)
+
+### Overall Architecture Characteristics
+
+[Back to Contents](#contents)
+
+### Selected Architecture
+
+Apart from quantum characteristics, the system must also demonstrate characteristics as a whole. We selected the following:
+
+Top:
+Reliability: Because we do not want customers rushing to the airport due to a false alarm
+Scalability: To support future growth
+*Performance*????: To honour the required SLAs despite large number of moving parts with different characteristics
+
+Others considered:
+Security, which we considered as implicit in the solution
+
+Since we have several quantums with different performance characteristics, and considering the system as a whole, we decided to choose a distributed, event-driven architecture.
+
+TODO: Link to  system wide ADR
+
+[Back to Contents](#contents)
+
+## Quantum Architectures
 
 Note: Critical path 5 min - Availability + End to end performance
+We then focused on each quantum and discussed the characteristics that it should demonstrate. Here is what we came up with:
+
+[Back to Contents](#contents)
+
+### User Interaction Quantum
+Deployability: Because we need to be able to perform A/B testing with different versions of
+Availability: Because the application must be available
+Performance:
+
+Architectural Style: Service Oriented
+
+[Back to Contents](#contents)
+
+#### Travel Notifications Receiver
+Interoperability: Because we need to be able to interface with as many sources of relevant information as possible.
+Availability: Because we expect API notifications (especially from Sabre/Apollo) to arrive much faster than emails and be 100% accurate.
+Scalability: Because we will add additional data sources as time goes by.
+
+Others considered:
+
+Architectural Style: Microservices (Pipeline ???)
+
+[Back to Contents](#contents)
 
 #### Email receiver
 Top:
@@ -120,45 +172,18 @@ Others considered:
 
 Architectural Style: Event Driven (Pipeline?)
 
-#### External agent gateway
- Interoperability: Because we need to be able to interface with as many sources of relevant information as possible.
- Availability: Because we expect API notifications (especially from Sabre/Apollo) to arrive much faster than emails and be 100% accurate.
- Scalability: Because we will add additional data sources as time goes by. 
+[Back to Contents](#contents)
 
-Others considered:
-
-Architectural Style: Microservices (Pipeline ???)
-
-#### Event Deduplicator
+#### Reservations Orchestrator
  Data Consistency: To provide accurate and up to date information to the user.
  Availability: Because it is the central component in the 'critical path' of the user's experience.
 
 Architectural Style: Service Oriented?
 
-#### Trip Ledger
+#### Analytics Collector
  Fault
  Configurability: To allow internationalization, different currencies etc. etc.
 
 Architectural Style: Service Oriented
 
-#### Gui service API's
- Deployability: Because we need to be able to perform A/B testing with different versions of
- Availability: Because the application must be available 
- Performance: 
-
-Architectural Style: Service Oriented
-
-### Architecture Style (overall)
-Apart from quantume characteristics, the system must also demonstrate characteristics as a whole. We selected the following:
-
-Top:
-    Reliability: Because we do not want customers rushing to the airport due to a false alarm
-    Scalability: To support future growth
-    *Performance*????: To honour the required SLAs despite large number of moving parts with different characteristics
-
-Others considered:
-    Security, which we considered as implicit in the solution
-
-Since we have several quantums with different performance characteristics, and considering the system as a whole, we decided to choose a distributed, event-driven architecture. 
-
-## Acknowledgements
+#### Activity Summarizer
