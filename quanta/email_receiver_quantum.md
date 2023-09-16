@@ -13,8 +13,8 @@ The following diagram describes the architecture for the Email Receiver in detai
 - Responsible for fetching incoming emails from the mail servers.
 - Uses industry standard protocols like IMAP or POP3 to retrieve emails securely.
 - Since we anticipate a high volume of emails, we integrate a message queue system (e.g., RabbitMQ, Apache Kafka) between the Mail Receiver and Mail Filtering component.
-- We have chosen to implement the Mail Receiver as a microservice because it involves continuous monitoring of email servers, which may require long-running processes and better control over resource management.
 - A database will be used to store authentication-related data and email information.
+- The Mail Receiver will be implemented as a microservice because it involves continuous monitoring of email servers, which may require long-running processes and better control over resource management.
 
 ### Mail Filtering
 - Monitors the mail queue for new email messages fetched by the Mail Receiver.
@@ -29,9 +29,10 @@ The following diagram describes the architecture for the Email Receiver in detai
 
 ### Mail Parsing
 - Analyzes the content of the filtered emails to identify reservation-related information.
-- Utilizes regular expressions, Natural Language Processing (NLP) techniques, or custom parsing rules to extract relevant data. 
+- Utilizes regular expressions, Natural Language Processing (NLP) techniques, or custom parsing rules to extract relevant data.
+- Uses NLP techniques to identify and process emails in multiple languages.
+- Recognizes and converts various currencies and date formats commonly found in emails. This will ensure that parsed data is accurate and standardized.
 - Converts extracted data into a structured format (e.g., JSON or XML) that can be easily processed and queued for further processing. 
-- UNIVERSAL??????????????????????????????
 - The Mail Parsing component will also be implemented as a serverless Lambda function. Serverless is appropriate because it provides on-demand processing for parsing individual emails and allows auto-scaling based on the volume of incoming emails.
 
 ### Mail Authenticator
@@ -40,11 +41,11 @@ The following diagram describes the architecture for the Email Receiver in detai
 - The Mail Authenticator will be implemented as a microservice because it manages user authentication and authorization, which may involve more complex business logic and user management tasks.
 
 ## Communications Between Components
-Communication between components will be facilitated through well-defined APIs (e.g. REST ) and messaging queues. 
+Communication between components will be facilitated through REST APIs and messaging queues. 
 
 ## Architectural Style Preferred
 Hybrid: Microservices - Event Driven Architecture
 
 ## Related ADRs
-- [Hybrid Architecture](../adrs/hybrid.md)
+- [ADR06 Hybrid Architecture](../adrs/hybrid.md)
 
