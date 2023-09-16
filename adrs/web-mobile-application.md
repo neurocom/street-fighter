@@ -1,7 +1,7 @@
 # Web and mobile application
 
 ## Decision
-In order to easier utilize each type of device we decided to have a separate applications, a web application for users accessing our platform from a browser and a mobile (native) application for mobile users.
+In order to easier utilize each type of device we decided to have 2 separate applications, a web application for users accessing our platform from a browser and a native mobile application for mobile users.
 
 ## Pros:
 - Web applications can be accessed from any device and are broadly available.
