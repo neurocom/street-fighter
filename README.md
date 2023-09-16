@@ -251,14 +251,12 @@ The following diagram describes the architecture for the email receiver quantum.
 
 We identified the top architectural characteristics of this quantum to be the following:
 
-- **Reliability???**: It is vital that email receiver correctly identifies reservations since we expect only a small fraction to be created via the user agent.
+- Performance:  Because we have to process a lot more emails to identify the ones that are really relevant. Also we will need to process emails of all users, including inactive ones, at all times.
+- Scalability:  Since we expect to go international - and we consider growth is a key metric for any startup - email volume will be a multiple of user growth. 
 - Availability: Because: 
   - the majority of reservations will arrive via email 
   - some travel agents might not provide APIs 
   - possible downtime in API communication will render email our last resort for updates.
-- Performance:  Because we have to process a lot more emails to identify the ones that are really relevant. Also we will need to process emails of all users, including inactive ones, at all times.
-- Scalability:  Since we expect to go international - and we consider growth is a key metric for any startup - email volume will be a multiple of user growth. 
-
 More details for the email receiver quantum can be found here:
 
 [Email Receiver Quantum Details](quanta/email_receiver_quantum.md)
