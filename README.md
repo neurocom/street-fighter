@@ -237,9 +237,7 @@ We identified the top architectural characteristics of this quantum to be the fo
   - some travel agents might not provide APIs 
   - possible downtime in API communication will render email our last resort for updates.
   
-More details for the email receiver quantum can be found here:
-
-[Email Receiver Quantum Details](quanta/email_receiver_quantum.md)
+More details for the email receiver quantum can be found here: [Email Receiver Quantum Details](quanta/email_receiver_quantum.md)
 
 [Back to Contents](#contents)
 
@@ -253,7 +251,7 @@ We identified the top architectural characteristics of this quantum to be the fo
 - Deployability: To accomodate processing of new information and constantly adding new reports
 - Configurability: To allow internationalization, different currencies etc.
 
-[Analytics Capture Quantum Details](quanta/analytics_capture_quantum.md)
+More details for the analytics capture quantum can be found here: [Analytics Capture Quantum Details](quanta/analytics_capture_quantum.md)
 
 [Back to Contents](#contents)
 
