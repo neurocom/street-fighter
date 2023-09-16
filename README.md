@@ -16,37 +16,26 @@ The original requirements can be found [here](/requirements/original.pdf)
 
 **[1. About us](#about-us)**
 
-**[2. Problem Statement](#problem-background)**
+**[2. Challenge Overview](#challenge-overview)**
 * [2.1. Vision](#the-vision)
-* [2.2. Requirements](#requirements)
-* [2.3. Actors Overview](#actors-overview)
+* [2.2. Scope](#the-scope)
 
 **[3. Domain Design](#domain-design)**
-* [3.1. Event Storming Process](#event-storming-process)
-  * [3.1.1 Event Storming Detailed View](/eventstorming/event-storming.md)
-* [3.2. Architecture Style](#architecture-style)
-* [3.3. Domain capabilities](#domain-capabilities)
-  * [3.3.1 Domain capabilities Overview](#capabilities-overview)
-  * [3.3.2 Domain capabilities In-depth](#capabilities-in-depth)
-      * [Connection Capability](domain/connection-capability.md)
-      * [Reporting Capability](domain/reporting-capability.md)
-      * [Order Capability](domain/order-capability.md)
-      * [User Capability](domain/user-capability.md)
-* [3.4. Legend](#legend)
-    </td>
-    <td>
-**[4. System Architecture](#system-architecture)**
-* [4.1. System Architecture Document](azure/resources/cloud-architecture.md)
+* [3.1. Actors and Use Cases](#use-cases)
+* [3.2. Quantum Identification](#)
 
-**[5. Architecture Decision Records (ADR)](#architecture-decision-records-adr)**
-* [2022-10-31 ADR01 Microservice Architecture](ADRs/2022-10-31_01-microservice-architecture.md)
-* [2022-10-31 ADR02 Event-Driven Design](ADRs/2022-10-31_02-event-driven-design.md)
-* [2022-10-31 ADR03 Points Redemption Framework](ADRs/2022-10-31_03-redeem-points.md)
-* [2022-10-31 ADR04 Dispatcher Architecture](ADRs/2022-10-31_04-dispatcher-architecture.md)
-* [2022-11-01 ADR05 Backend-for-Frontend Pattern](ADRs/2022-11-01_05-bff.md)
-* [2022-11-06 ADR06 Read Replica Pattern](ADRs/2022-11-06_06-read-replica-pattern.md)
-* [2022-11-08 ADR07 Azure as a Hyperscaler](ADRs/2022-11-08_07-azure-hyperscaler.md)
-* [2022-11-08 ADR08 GDPR Compliance](ADRs/2022-11-08_08-GDPR-compliance.md)
+**[4. System Architecture](#system-architecture)**
+* [4.1. System-wide architecture characteristics](azure/resources/cloud-architecture.md)
+* [4.2. Overall Architecture](azure/resources/cloud-architecture.md)
+* ??????? OVERALL ARCHITECTURE ADR????????????
+* [4.3. Per Quantum Architecture]
+* [4.3.1. User Interaction Quantum]()
+* [4.3.2 Travel Notification Receiver]()
+* [4.3.4 Email Receiver]()
+* [4.3.5 Reservation Orchestrator]()
+* [4.3.6 Analytics Collector]()
+* [4.3.7 Activity Summarizer]()
+
 
 **[6. Acknowledgements](#acknowledgements)**
     </td>
@@ -58,7 +47,7 @@ The original requirements can be found [here](/requirements/original.pdf)
 Our team consists of [Apostolos Mantes](https://www.linkedin.com/in/mantesap), [George Lourakis](https://www.linkedin.com/in/georgios-lourakis-099b79197), [George Panagiotakis](https://www.linkedin.com/in/yiorgos-panayiotakis-71185a5b), [Konstantinos Polydorou](htts://www.linkedin.com/in/kpolyd) and [Spyros Economopoulos](https://www.linkedin.com/in/economopoulos). We are members of [Neurocom SA](https://www.neurocom.gr), a greek company focusing mainly on the telecommunication sector, located in Greece.
 
 
-## Our understanding of the requirements  
+## Challenge Overview
 
 ### The Vision
 
@@ -73,17 +62,21 @@ At this stage focus on
 
 Keep in mind the vision and consider how the platform will embrace trains, buses, attractions etc. etc.
 
-### Requirements in scope
+# Domain Design
 
-We grouped our understanding of the requirements for the **Road Warrior** platform into the following two sections.  
+## Actors and Use Cases
+
+We grouped our understanding of the requirements for the **Road Warrior** platform into the following two sections.
 - [Functional requirements](requirements/functional-requirements.md)
-- [Architecture Characteristics Drivers](requirements/drivers.md) 
+- [Architecture Characteristics Drivers](requirements/drivers.md)
+
+## Quantum Identification
 
 ### Things considered, but out of scope
 
-For this iteration we decided to consider out of scope 
+For this iteration we decided to consider out of scope
 * the capabilities to allow Road Warrior to monetize its service and analytical data.
-* security, which we considered as implicit in the solution
+* Trip access provider
 * deployment platform options
 
 
@@ -99,13 +92,12 @@ Our initial point was the following diagram(exploration/interactions.md):
 
 * Email receiver
 * External agent gateway
-* Notification deduplicator
-* Trip Monitor
+* Event deduplicator
+* Trip Ledger
 * GUI serving APIs
 * Web application 
 * Mobile (native) application
 * Social media gateway
-* Trip access provider
 * Reporting service
 * Anaytics service
 
@@ -126,6 +118,7 @@ Top:
 Others considered:
  Fault tolerance: Not deemed important because 
 
+Architectural Style: Event Driven (Pipeline?)
 
 #### External agent gateway
  Interoperability: Because we need to be able to interface with as many sources of relevant information as possible.
@@ -134,22 +127,26 @@ Others considered:
 
 Others considered:
 
+Architectural Style: Microservices (Pipeline ???)
 
-#### Notification Deduplicator
+#### Event Deduplicator
  Data Consistency: To provide accurate and up to date information to the user.
  Availability: Because it is the central component in the 'critical path' of the user's experience.
 
-#### Trip Monitor
+Architectural Style: Service Oriented?
+
+#### Trip Ledger
  Fault
  Configurability: To allow internationalization, different currencies etc. etc.
+
+Architectural Style: Service Oriented
 
 #### Gui service API's
  Deployability: Because we need to be able to perform A/B testing with different versions of
  Availability: Because the application must be available 
  Performance: 
 
-#### 
-
+Architectural Style: Service Oriented
 
 ### Architecture Style (overall)
 Apart from quantume characteristics, the system must also demonstrate characteristics as a whole. We selected the following:
@@ -159,103 +156,9 @@ Top:
     Scalability: To support future growth
     *Performance*????: To honour the required SLAs despite large number of moving parts with different characteristics
 
-Others considered are:
+Others considered:
+    Security, which we considered as implicit in the solution
 
 Since we have several quantums with different performance characteristics, and considering the system as a whole, we decided to choose a distributed, event-driven architecture. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Domain capabilities
-Based on the output of the Event Storming, we defined the following capabilities for each of which we developed 
-a microservice architecture: [Connection](domain/connection-capability.md), [Order](domain/order-capability.md), [User](domain/user-capability.md), [Report](domain/reporting-capability.md).
-
-#### Capabilities Overview
-The following diagram gives a high-level overview of how the capabilities interact with each other. An in-depth explanation of how each capability works internally
-and what their responsibilities are, is shown in the section up next.
-<p align="center">
-<img width="900" src="domain/resources/capabilities-overview.drawio.svg">
-</p>
-
-
-### Legend
-For all of the above, if not stated otherwise in the diagram at hand, the symbols reflect the meaning as described in the following legend.
-<p align="center">
-<img width="700" src="domain/resources/drawio.svg">
-</p>
-
-## System Architecture
-
-### Principles
-
-The main principle we decided to adhere to 
-
-
-### Approach
-We used a [domain-driven approach](#domain-design) to define our [service landscape](#domain-capabilities) for the 
-**XXX** ecosystem. With those capabilities at hand, we finally propose a cloud-native software solution that can 
-cope with the [requirements](#requirements) and is feasible to implement for an ambitious startup corporation. 
-The design embraces [DevOps](https://en.wikipedia.org/wiki/DevOps), [GitOps](https://www.redhat.com/de/topics/devops/what-is-gitops) and 
-[Zero Trust](https://en.wikipedia.org/wiki/Zero_trust_security_model) principles as first 
-class citizens. As an exemplary cloud vendor we chose [Microsoft Azure](https://azure.microsoft.com/en-us/), however the solution
-can easily be ported to other cloud platforms as described in [ADR07 Azure as a Hyperscaler](ADRs/2022-11-08_07-azure-hyperscaler.md).
-
-Please refer the **[system architecture document](azure/resources/cloud-architecture.md)** for further explanations.
-
-
-<p align="center">
-<img width="1000" src="azure/resources/cloud_architecture-azure-overview-simple.drawio.png">
-</p>
-
-## Architecture Decision Records (ADR)
-This summary provides an overview of the ADRs we refer to in the appropriate sections above. An ADR includes the context, i.e. the problem statement, a solution space, a decision, rationale and the decisions consequences.
-
-- [2022-10-31 ADR01 Microservice Architecture](ADRs/2022-10-31_01-microservice-architecture.md)
-- [2022-10-31 ADR02 Event-Driven Design](ADRs/2022-10-31_02-event-driven-design.md)
-- [2022-10-31 ADR03 Points Redemption Framework](ADRs/2022-10-31_03-redeem-points.md)
-- [2022-10-31 ADR04 Dispatcher Architecture](ADRs/2022-10-31_04-dispatcher-architecture.md)
-- [2022-11-01 ADR05 Backend-for-Frontend Pattern](ADRs/2022-11-01_05-bff.md)
-- [2022-11-06 ADR06 Read Replica Pattern](ADRs/2022-11-06_06-read-replica-pattern.md)
-- [2022-11-08 ADR07 Azure as a Hyperscaler](ADRs/2022-11-08_07-azure-hyperscaler.md)
-- [2022-11-08 ADR08 GDPR Compliance](ADRs/2022-11-08_08-GDPR-compliance.md)
-
 ## Acknowledgements
-We would like to thank the team behind the O'Reilly Architectural Katas and the judges for their effort in making this instructive and fun event possible. Next, we would like to thank the team of XXXX for presenting such an interesting challenge with real-world usage and positive impact for society. Finally, we would like to thank our employer, Innovation Process Technology, for giving us the opportunity to participate in this challenge and working on our architectural skills. It's been one hell of a ride.
-
-<p align="center">
-<img width="600" src="context/resources/oreilly-archi-kata-fall-2022-team-ipt.svg">
-</p>
-
-
-<!--               NOTES                >
-
-
-HTML IMG TEMPLATE FOR IMAGES
-
-<p align="center">
-<img width="800" src="relative/path/to">
-</p>
-
--->
