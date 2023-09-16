@@ -31,11 +31,6 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
     * [4.2.3 Email Receiver](#email-receiver)
     * [4.2.4 Analytics Capture](#analytics-capture)
 
-**[5. Sequence Diagrams](#sequence-diagrams)**
-* [5.1. Road warrior initiated CRUD](#road-warrior-initiated-crud)
-* [5.2 Travel Update Reception](#travel-update-reception)
-* [5.3 Yearly Report Generation](#yearly-report-generation)
-
 </td>
 <td valign="top" style="vertical-align:top">
 
@@ -54,6 +49,7 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
 * [ADR12 GDPR](adrs/gdpr.md)
 * [ADR13 Deploy Options](adrs/deploy-options.md)
 * [ADR14 Availability Deploy Concerns](adrs/availability-deploy-concerns.md)
+* [ADR15 Monitoring](adrs/monitoring.md)
 
     </td>
  </tr>
@@ -202,7 +198,8 @@ We then focused on each quantum and discussed the characteristics that it should
 ### User Agent
 
 The following diagram describes the architecture for the user agent quantum
-![User Agent Quantum Architectural Diagram](assets/web-mobile-app.png)
+
+![User Agent Quantum Architectural Diagram](assets/user_agent.png)
 
 We identified the top architectural characteristics of this quantum to be the following:
 

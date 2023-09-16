@@ -2,7 +2,7 @@
 
 The following diagram describes the architecture for the Web and mobile application, as well as the communication with each of the required services
 <p style="text-align:center">
-<img width="1000" src="../assets/web-mobile-app.png">
+<img width="1000" src="../assets/user_agent.png">
 </p>
 
 
@@ -28,10 +28,6 @@ It manages:
 - User specific configuration, such as locale (language, currency, etc.) and other preferences
 - Privacy settings
 
-### Reservation API
-Service that exposes an API interface for communicating with internal systems.
-- Contains logic for performing CRUD operations on reservations and trips.
-- Maintain a cache (In-Memory Database) for improved performance and latency.
 
 ### Sequence Diagram
 
@@ -40,8 +36,8 @@ The following sequence diagram demonstrates how the agent fullfils a CRUD operat
 ![Road Warrior Initiated CRUD Sequence Diagram](../seq-diagrams/road-warrior-initiated-crud.png)
 
 ## Related ADRs
-- [ADR01 API-Gateway](../adrs/api-gateway.md)
-- [ADR02 CDN](../adrs/cdn.md)
-- [ADR03 Rest](../adrs/rest.md)
-- [ADR04 Server Sent Events](../adrs/server-sent-events.md)
+- [ADR02 API-Gateway](../adrs/api-gateway.md)
+- [ADR03 CDN](../adrs/cdn.md)
+- [ADR04 Rest](../adrs/rest.md)
 - [ADR05 Web and Native Mobile Apps](../adrs/web-mobile-application.md)
+- [ADR06 Server Sent Events](../adrs/server-sent-events.md)
