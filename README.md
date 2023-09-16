@@ -138,6 +138,7 @@ This the final list along with each quantum responsibilities
 * 800 ms web response time
 * 1.4 sec mobile app contentful paint
 * 5 minutes end to end update limit
+* 99.99% ("four nines") availability
 
 #### Assumptions
 We assume that most, e.g. 80%, of the users will mostly interact with the app within a four - hour time frame in working days corresponding to 1.6M users accessing the site in 5 * 4 * 3600 = 72K sec, leading to an expected number of 25 requests / second. 
@@ -188,15 +189,14 @@ TODO: Link to  system wide ADR
 
 ### System-wide Architectural Diagram
 
-
 ## Quanta and Related Architectures
 
 We then focused on each quantum and discussed the characteristics that it should demonstrate. Here is what we came up with:
 
 ### User Interaction Quantum
-- Deployability: Because we need to be able to perform A/B testing with different versions of
-- Availability: Because the application must be available
-- Performance:
+- Deployability: Because we need to be able to perform A/B testing with different versions of the application as features are being added
+- Availability: Because the application must be available 99.99% ("four nines") of the time
+- Performance: To allow for 0.8s and 1.4s response time in Web and Mobile 
 
 Architectural Style: Service Oriented
 
@@ -217,7 +217,7 @@ Architectural Style: Microservices (Pipeline)
 - Reliability:  Because we consider very important that the platform identifies reservations rather than the user creates them through the user interface.
 - Availability: Because of possible API non-existence for some travel agents and possible interruptions in Sabre/Appolo. Email will be our last resort.
 - Performance:  Because we have to process a lot more emails to identify the ones that are really relevant. Also we will need to process emails of all users, including inactive ones, at all times.
-- Scalability:  Since we expect to go international - and we consider growth is a key metric for any startup - and email volume will be a multiple of user growth. 
+- Scalability:  Since we expect to go international - and we consider growth is a key metric for any startup - email volume will be a multiple of user growth. 
 
 Others considered:
 
@@ -226,7 +226,7 @@ Architectural Style: Hybrid: Microservices - Event Driven Architecture
 [View Details](quanta/email_receiver_quantum.md)
 
 #### Analytics Capture
-- Deployability: To accomodate processing of new information and constantly adding report functionality
+- Deployability: To accomodate processing of new information and constantly adding new reports
 - Configurability: To allow internationalization, different currencies etc.
 
 Architectural Style: Service Oriented
