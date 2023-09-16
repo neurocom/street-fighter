@@ -257,6 +257,7 @@ We identified the top architectural characteristics of this quantum to be the fo
   - the majority of reservations will arrive via email 
   - some travel agents might not provide APIs 
   - possible downtime in API communication will render email our last resort for updates.
+  
 More details for the email receiver quantum can be found here:
 
 [Email Receiver Quantum Details](quanta/email_receiver_quantum.md)
