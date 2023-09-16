@@ -220,8 +220,6 @@ Architectural Style: Microservices (Pipeline)
 - Performance:  Because we have to process a lot more emails to identify the ones that are really relevant. Also we will need to process emails of all users, including inactive ones, at all times.
 - Scalability:  Since we expect to go international - and we consider growth is a key metric for any startup - email volume will be a multiple of user growth. 
 
-Others considered:
-
 Architectural Style: Hybrid: Microservices - Event Driven Architecture
 
 [View Details](quanta/email_receiver_quantum.md)
