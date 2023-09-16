@@ -21,9 +21,9 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
 * [3.2. Quanta Identification](#quanta-identification)
 
 **[4. Architecture](#architecture)**
-* [4.1. System-wide architecture](#system-wide-architecture)
+* [4.1. System-Wide architecture](#system-wide-architecture)
     * [4.1.1. Drivers](#drivers)
-    * [4.1.2. System-wide Architecture Characteristics](#system-wide-architecture-characteristics)
+    * [4.1.2. System-Wide Architecture Characteristics](#system-wide-architecture-characteristics)
     * [4.1.3. Selected architecture](#selected-architecture)
 * [4.2. Quanta and Related Architectures](#quanta-and-related-architectures)
     * [4.2.1. User Agent](#user-agent)
