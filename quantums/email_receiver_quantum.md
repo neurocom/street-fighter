@@ -2,7 +2,7 @@
 
 The following diagram describes the architecture for the Email Receiver in detail.
 <p align="center">
-<img width="1000" src="../assets/mailflow.svg">
+<img width="1000" src="../assets/mailflow.png">
 </p>
 
 
@@ -44,6 +44,5 @@ Communication between components will be facilitated through well-defined APIs (
 Hybrid - Event-driven (Serverless Lambda Function) + Microservices
 
 ## Related ADRs
-- [ADR01 Microservice Architecture](../adrs/microservice-architecture.md)
-- [ADR02 Event-Driven Design](../adrs/event-driven-design.md)
+- [Hybrid Architecture](../adrs/hybrid.md)
 
