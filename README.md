@@ -27,10 +27,10 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
     * [4.1.3. Selected architecture](#selected-architecture)
 * [4.2. Quanta and Related Architectures](#quanta-and-related-architectures)
     * [4.2.1. User Agent](#user-agent)
-    * [4.2.2 ](#travel-updates-receiver)
-    * [4.2.3 Travel Updates Receiver](#travel-updates-receiver)
-    * [4.2.4 Email Receiver](#email-receiver)
-    * [4.2.5 Analytics Capture](#analytics-capture)
+    * [4.2.2. Reservations Orchestrator](#reservations-orchestrator)
+    * [4.2.3. Travel Updates Receiver](#travel-updates-receiver)
+    * [4.2.4. Email Receiver](#email-receiver)
+    * [4.2.5. Analytics Capture](#analytics-capture)
 
 </td>
 <td valign="top" style="vertical-align:top">
@@ -101,7 +101,7 @@ We considered in our early discussions that there are parts in the system that s
 
 Based on this observation and the initial building blocks, we utilized the quantum concept (https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch07.html#sec-quantum-def) during our analysis to identify the different parts of the platform that serve different needs and demonstrate those characteristics.
 
-This the final list along with each quantum responsibilities 
+This is the final list along with each quantum responsibilities 
 
 * User Agent
   * Interact with the user (display dashboard, receive commands etc.)
@@ -221,8 +221,8 @@ The following diagram describes the reservations orchestrator quantum
 
 We identified the top architectural characteristics of this quantum to be the following:
 
-Data Consistency: To provide accurate and up-to-date information to the user.
-Availability: Because it is the central component in the 'critical path' of the user's experience.
+- Data Consistency: To provide accurate and up-to-date information to the user.
+- Availability: Because it is the central component in the 'critical path' of the user's experience.
 
 More details for the reservations orchestrator component can be found here:
 
