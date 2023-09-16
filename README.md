@@ -37,6 +37,9 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
 * [5.2 Notification Reception]()
 * [5.3 Yearly Report Generation](#yearly-report-generation)
 
+</td>
+<td>
+
 **[6. ADRs](#adrs)**
 * [ADR01 API-Gateway](adrs/api-gateway.md)
 * [ADR02 CDN](adrs/cdn.md)
