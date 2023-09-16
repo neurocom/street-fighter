@@ -8,7 +8,7 @@ In the future, we should use the Analytics Capture data as a platform for provid
 
 The following diagram describes the architecture for the Analytics Capture in detail.
 <p align="center">
-<img width="1000" src="../assets/analytics.svg">
+<img width="1000" src="../assets/analytics.png">
 </p>
 
 ## Components
