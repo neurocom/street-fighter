@@ -275,7 +275,25 @@ which complements container orchestration handling of Kubernetes by addressing s
 security, and observability challenges ([ADR15 Monitoring](adrs/monitoring.md))
 
 
-Finally, it makes sense to utilize a managed Kubernetes service to deploy our system in the cloud 
-using Kubernetes clusters across multiple geographic regions or data centers to achieve objectives 
-like high availability, fault tolerance, and reduced latency.
-([ADR14 Availability Deploy Concerns](adrs/availability-deploy-concerns.md))
+Finally, it makes sense to utilize a managed Kubernetes service to deploy our system in the cloud using Kubernetes clusters across multiple geographic regions or data centers to achieve objectives like high availability, fault tolerance, and reduced latency. ([ADR14 Availability Deploy Concerns](adrs/availability-deploy-concerns.md))
+
+## List of Architecture Decision Records (ADRs)
+
+The following list contains architecture decision records (ADRs) created as part of the architecture design process in the system or quantum level. 
+
+* [ADR01 Hybrid Architecture](adrs/hybrid.md)
+* [ADR02 API-Gateway](adrs/api-gateway.md)
+* [ADR03 CDN](adrs/cdn.md)
+* [ADR04 Rest](adrs/rest.md)
+* [ADR05 Web and Native Mobile Apps](adrs/web-mobile-application.md)
+* [ADR06 Server Sent Events](adrs/server-sent-events.md)
+* [ADR07 External-API-Integration](adrs/external-api-integration.md)
+* [ADR08 CQRS](adrs/cqrs.md)
+* [ADR09 Message Broker](adrs/message-broker.md)
+* [ADR10 Specialized DBs](adrs/specialized-dbs.md)
+* [ADR11 Analytics OLAP](adrs/analytics.md)
+* [ADR12 GDPR](adrs/gdpr.md)
+* [ADR13 Deploy Options](adrs/deploy-options.md)
+* [ADR14 Availability Deploy Concerns](adrs/availability-deploy-concerns.md)
+* [ADR15 Monitoring](adrs/monitoring.md)
+* [ADR16 Mail Polling](adrs/mail_polling.md)
