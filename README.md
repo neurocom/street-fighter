@@ -147,14 +147,14 @@ Given the above we have identified the following top three architecture characte
 
 * Availability: Since the application must be available to ensure the best customer experience
 * Interoperability: Since we need to interoperate with a lot of travel agents at both national and international level
-* Scalability: Since we both plan to expand and anticipate periods with higher traffic 
-* Configurability: Since this will be an international application with different time zones, currencies, confirmation email languages etc. etc.
+* Scalability: Since we both plan to expand and anticipate periods with higher traffic
 
 Additional applicable characteristics that we considered were:
 
 * Performance (especially with regard to external information sources): We decided to address it in the quantum level
 * Deployability: To allow us to quickly onboard new travel agents and reservation types. This will be aided by allowing each quantum to be deployed separately (and possibly in parallel).
 * Fault Tolerance: To allow the system to operate in case of e.g. network issues with external agents / travel systems and/or email providers. We consider that we can address this issue with the CRUD operation provided to the end user as well as the option to parse email updates on top of confirmation emails.
+* Configurability: Since this will be an international application with different time zones, currencies, confirmation email languages etc. etc.
 * Data Consistency: To avoid false notifications to alarm the user or miss important information. Again, we decided to address this issue in the corresponding quanta.
 * Security: we did not identify a specific security requirement (apart from GDPR which we addressed in the analytics quantum) and email sharing which we expect to be standardized.
 
