@@ -17,7 +17,7 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
 * [2.2. Scope](#the-scope)
 
 **[3. Domain Design](#domain-design)**
-* [3.1. Actors and Use Cases](#use-cases)
+* [3.1. Actors and Use Cases](#actors-and-use-cases)
 * [3.2. Quanta Identification](#quanta-identification)
 
 **[4. Architecture](#architecture)**
@@ -293,7 +293,6 @@ for managing containerized workloads in a scalable, resilient, and automated man
 It becomes an even more attractive choice for our system since we can setup and utilize a service mesh (e.g. Istio)
 which complements container orchestration handling of Kubernetes by addressing service-to-service communication,
 security, and observability challenges ([ADR15 Monitoring](adrs/monitoring.md))
-
 
 Finally, it makes sense to utilize a managed Kubernetes service to deploy our system in the cloud 
 using Kubernetes clusters across multiple geographic regions or data centers to achieve objectives 
