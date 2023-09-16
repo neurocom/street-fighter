@@ -39,6 +39,6 @@ Microservices
 
 ## User initiated action - Sequence diagram
 
-The following sequence diagram demonstrates how the agent fullfils a CRUD operation by the user.
+The following sequence diagram demonstrates how the agent fulfils a CRUD operation by the user.
 
 ![Road Warrior Initiated CRUD Sequence Diagram](../seq-diagrams/road-warrior-initiated-crud.png)
