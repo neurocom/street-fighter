@@ -31,7 +31,6 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
     * [4.2.3. Travel Updates Receiver](#travel-updates-receiver)
     * [4.2.4. Email Receiver](#email-receiver)
     * [4.2.5. Analytics Capture](#analytics-capture)
-
 </td>
 <td valign="top" style="vertical-align:top">
 
@@ -39,7 +38,7 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
 
 **[6. ADRs](#list-of-architecture-decision-records-adrs)**
 
-    </td>
+</td>
  </tr>
 </table>
 
