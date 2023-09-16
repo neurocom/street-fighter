@@ -31,6 +31,4 @@ The following sequence diagram demonstrates how the agent processes an update ev
 
 ## Related ADRs
 - [ADR07 External-API-Integration](../adrs/external-api-integration.md)
-- [ADR08 CQRS](../adrs/cqrs.md)
 - [ADR09 Message Broker](../adrs/message-broker.md)
-- [ADR10 Specialized DBs](../adrs/specialized-dbs.md)
