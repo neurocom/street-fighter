@@ -40,19 +40,20 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
 <td valign="top" style="vertical-align:top">
 
 **[6. ADRs](#adrs)**
-* [ADR01 API-Gateway](adrs/api-gateway.md)
-* [ADR02 CDN](adrs/cdn.md)
-* [ADR03 Rest](adrs/rest.md)
-* [ADR04 Web and Native Mobile Apps](adrs/web-mobile-application.md)
-* [ADR05 Deploy Options](adrs/deploy-options.md)
-* [ADR06 Hybrid Architecture](adrs/hybrid.md)
+* [ADR01 Hybrid Architecture](adrs/hybrid.md)
+* [ADR02 API-Gateway](adrs/api-gateway.md)
+* [ADR03 CDN](adrs/cdn.md)
+* [ADR04 Rest](adrs/rest.md)
+* [ADR05 Web and Native Mobile Apps](adrs/web-mobile-application.md)
+* [ADR06 Server Sent Events](adrs/server-sent-events.md)
 * [ADR07 External-API-Integration](adrs/external-api-integration.md)
 * [ADR08 CQRS](adrs/cqrs.md)
 * [ADR09 Message Broker](adrs/message-broker.md)
 * [ADR10 Specialized DBs](adrs/specialized-dbs.md)
-* [ADR11 Server Sent Events](adrs/server-sent-events.md)
-* [ADR12 Analytics OLAP](adrs/analytics.md)
-* [ADR13 GDPR](adrs/gdpr.md)
+* [ADR11 Analytics OLAP](adrs/analytics.md)
+* [ADR12 GDPR](adrs/gdpr.md)
+* [ADR13 Deploy Options](adrs/deploy-options.md)
+* [ADR14 Availability Deploy Options](adrs/availability-deploy-options.md)
 
     </td>
  </tr>
