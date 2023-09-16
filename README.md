@@ -288,5 +288,8 @@ It becomes an even more attractive choice for our system since we can setup and 
 which complements container orchestration handling of Kubernetes by addressing service-to-service communication,
 security, and observability challenges ([ADR15 Monitoring](adrs/monitoring.md))
 
-Finally, it makes sense to utilize a managed Kubernetes service to run Kubernetes in the cloud and on-premises data centers
-in hybrid fashion to reduce costs, but also to achieve geographical distribution and enhanced availability ([ADR14 Availability Deploy Concerns](adrs/availability-deploy-concerns.md))
+
+Finally, it makes sense to utilize a managed Kubernetes service to deploy our system in the cloud 
+using Kubernetes clusters across multiple geographic regions or data centers to achieve objectives 
+like high availability, fault tolerance, and reduced latency.
+([ADR14 Availability Deploy Concerns](adrs/availability-deploy-concerns.md))
