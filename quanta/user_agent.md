@@ -33,6 +33,12 @@ Service that exposes an API interface for communicating with internal systems.
 - Contains logic for performing CRUD operations on reservations and trips.
 - Maintain a cache (In-Memory Database) for improved performance and latency.
 
+### Sequence Diagram
+
+The following sequence diagram demonstrates how the agent fullfils a CRUD operation by the user.
+
+![Road Warrior Initiated CRUD Sequence Diagram](../seq-diagrams/road-warrior-initiated-crud.png)
+
 ## Related ADRs
 - [ADR01 API-Gateway](../adrs/api-gateway.md)
 - [ADR02 CDN](../adrs/cdn.md)

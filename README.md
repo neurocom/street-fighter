@@ -26,14 +26,14 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
     * [4.1.2. System-wide Architecture Characteristics](#system-wide-architecture-characteristics)
     * [4.1.3. Selected architecture](#selected-architecture)
 * [4.2. Quanta and Related Architectures](#quanta-and-related-architectures)
-    * [4.2.1. User Agent](quanta/user_agent.md)
-    * [4.2.2 Travel Updates Receiver Quantum](quanta/travel_updates_receiver_quantum.md)
-    * [4.2.3 Email Receiver Quantum](quanta/email_receiver_quantum.md)
-    * [4.2.4 Analytics Capture Quantum](quanta/analytics_capture_quantum.md)
+    * [4.2.1. User Agent](#user-agent)
+    * [4.2.2 Travel Updates Receiver](#travel-updates-receiver)
+    * [4.2.3 Email Receiver](#email-receiver)
+    * [4.2.4 Analytics Capture](#analytics-capture)
 
 **[5. Sequence Diagrams](#sequence-diagrams)**
 * [5.1. Road warrior initiated CRUD](#road-warrior-initiated-crud)
-* [5.2 Notification Reception]()
+* [5.2 Travel Update Reception](#travel-update-reception)
 * [5.3 Yearly Report Generation](#yearly-report-generation)
 
 </td>
@@ -149,9 +149,9 @@ We do not expect a sudden burst of requests, maybe an increase in holiday period
 
 Assuming an average of 5 reservations per active user (to accommodate attractions or events) and an average trip duration of two weeks we expect 2 million * 5 = 10 million reservations per two weeks = 5 million per week (~250 million reservations per year).
 
-We expect on average 5 updates per reservation => 25 million relevant update events per week (of course the updates we will have to process will be much higher. Suppose we have captured 5% of the market we expect 20 times this number in total, leading to 500 million update events per week).
+We expect on average 5 updates per reservation => 25 million relevant update events per week (of course the updates we will have to process will be much higher. Suppose we have captured 5% of the market we expect 20 times this number in total, leading to 500 million update events per week), i.e. ~1000 reqs per second.
 
-Email parsing, if we consider the 'share your mailbox approach' is much more challenging. Suppose 30% of our users have opted in for this option and that the average user receives 100 emails per day, we need to filter 30% * 5M * 100 = 150M emails per day. 
+Email parsing, if we consider the 'share your mailbox approach' is much more challenging. Suppose 30% of our users have opted in for this option and that the average user receives 100 emails per day, we need to filter 30% * 5M * 100 = 150M emails per day, i.e. ~4000 reqs per second. 
 
 #### Additional Drivers
 
@@ -200,67 +200,69 @@ The system-wide architecture is depicted in the following diagram.
 We then focused on each quantum and discussed the characteristics that it should demonstrate. Here is what we came up with:
 
 ### User Agent
+
+The following diagram describes the architecture for the user agent quantum
+![User Agent Quantum Architectural Diagram](assets/web-mobile-app.png)
+
+We identified the top architectural characteristics of this quantum to be the following:
+
 - Deployability: Because we need to be able to perform A/B testing with different versions of the application as features are being added
 - Availability: Because the application must be available 99.99% ("four nines") of the time
 - Performance: To allow for 0.8s and 1.4s response time in Web and Mobile 
+- Configurability: To allow internationalization, different currencies etc.
 
-Architectural Style: Service Oriented
+More details for the user agent quantum can be found here:
+[User Agent Quantum Details](quanta/user_agent.md)
 
-[View Details](quanta/travel_updates_receiver_quantum.md)
+[Back to Contents](#contents)
 
-#### Travel Notifications Receiver
+#### Travel Updates Receiver
+The following diagram describes the architecture for the travel updates receiver quantum
+
+![Travel Update Receiver Quantum Architectural Diagram](assets/travel-update-receiver.png)
+
+We identified the top architectural characteristics of this quantum to be the following:
+
 - Interoperability: Because we need to be able to interface with as many sources of relevant information as possible.
-- Availability: Because we expect API notifications (especially from Sabre/Apollo) to arrive much faster than emails and be 100% accurate.
+- **Data Consistency ????? : Because we expect API notifications (especially from Sabre/Apollo) to arrive much faster than emails and be 100% accurate.**
 - Scalability: Because we will add additional data sources as time goes by.
 
-Others considered:
+More details for the travel updates receiver quantum can be found here:
+[Update Receiver Quantum Details](quanta/travel_updates_receiver_quantum.md)
 
-Architectural Style: Microservices (Pipeline)
-
-[View Details](quanta/travel_updates_receiver_quantum.md)
+[Back to Contents](#contents)
 
 #### Email receiver
-- Reliability:  Because we consider very important that the platform identifies reservations rather than the user creates them through the user interface.
-- Availability: Because of possible API non-existence for some travel agents and possible interruptions in Sabre/Appolo. Email will be our last resort.
+The following diagram describes the architecture for the email receiver quantum.
+
+![Email Receiver Quantum Architectural Diagram](assets/mailflow.png)
+
+We identified the top architectural characteristics of this quantum to be the following:
+
+- **Reliability???**: It is vital that email receiver correctly identifies reservations since we expect only a small fraction to be created via the user agent.
+- Availability: Because: 
+  - the majority of reservations will arrive via email 
+  - some travel agents might not provide APIs 
+  - possible downtime in API communication will render email our last resort for updates.
 - Performance:  Because we have to process a lot more emails to identify the ones that are really relevant. Also we will need to process emails of all users, including inactive ones, at all times.
 - Scalability:  Since we expect to go international - and we consider growth is a key metric for any startup - email volume will be a multiple of user growth. 
 
-Architectural Style: Hybrid: Microservices - Event Driven Architecture
+More details for the email receiver quantum can be found here:
 
-[View Details](quanta/email_receiver_quantum.md)
+[Email Receiver Quantum Details](quanta/email_receiver_quantum.md)
+
+[Back to Contents](#contents)
 
 #### Analytics Capture
+The following diagram describes the architecture for the Analytics Capture in detail.
+
+![Analytics Capture Quantum Architectural Diagram](assets/analytics.png)
+
+We identified the top architectural characteristics of this quantum to be the following:
+
 - Deployability: To accomodate processing of new information and constantly adding new reports
 - Configurability: To allow internationalization, different currencies etc.
 
-Architectural Style: Service Oriented
-
-[View Details](quanta/analytics_capture_quantum.md)
-
-[Back to Contents](#contents)
-
-# Sequence Diagrams
-
-The following sequence diagrams demonstrate how core operations are carried out end-to-end, as a means of better understanding of the architecture.
-
-## Road Warrior Initiated CRUD
-
-![Road Warrior Initiated CRUD Sequence Diagram](seq-diagrams/road-warrior-initiated-crud.png)
-
-The corresponding diagram for the alternative architecture considered is below
-
-![Road Warrior Initiated CRUD Sequence Diagram - Alternative](seq-diagrams/road-warrior-initiated-crud-alt.png)
-
-[Back to Contents](#contents)
-
-## Travel Update Reception
-
-![Travel Update Reception](seq-diagrams/travel-update-reception.png)
-
-[Back to Contents](#contents)
-
-## Yearly Report Generation
-
-![Yearly Report Generation](seq-diagrams/yearly-report-generation.png)
+[Analytics Capture Quantum Details](quanta/analytics_capture_quantum.md)
 
 [Back to Contents](#contents)

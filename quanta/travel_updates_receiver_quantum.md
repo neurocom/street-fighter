@@ -47,6 +47,13 @@ Stateless module that handles the delivery of notification through multiple noti
 ### Reservation API
 Please refer to [Reservation API](user_agent.md#reservation-api)
 
+
+### Sequence Diagram
+
+The following sequence diagram demonstrates how the agent processes an update event.
+
+![Travel Update Reception](../seq-diagrams/travel-update-reception.png)
+
 ## Related ADRs
 - [ADR07 External-API-Integration](../adrs/external-api-integration.md)
 - [ADR08 CQRS](../adrs/cqrs.md)
