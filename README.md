@@ -26,7 +26,7 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
     * [4.1.2. System-wide Architecture Characteristics](#system-wide-architecture-characteristics)
     * [4.1.3. Selected architecture](#selected-architecture)
 * [4.2. Quanta and Related Architectures](#quanta-and-related-architectures)
-    * [4.2.1. User Interaction Quantum](quanta/user_interaction_quantum.md)
+    * [4.2.1. User Agent](quanta/user_agent.md)
     * [4.2.2 Travel Updates Receiver Quantum](quanta/travel_updates_receiver_quantum.md)
     * [4.2.3 Email Receiver Quantum](quanta/email_receiver_quantum.md)
     * [4.2.4 Analytics Capture Quantum](quanta/analytics_capture_quantum.md)
@@ -103,9 +103,10 @@ Based on this observation and the initial building blocks, we utilized the quant
 
 This the final list along with each quantum responsibilities 
 
-* User Interaction Quantum
+* User Agent
   * Interact with the user (display dashboard, receive commands etc.)
   * Capture analytics metrics
+  * Store and publish user profiles
   * Push notifications
   * Share content to social media via related APIs
 * Travel Updates Receiver
@@ -117,13 +118,13 @@ This the final list along with each quantum responsibilities
   * Connect to user mailboxes and filter out travel related emails (reservation + updates)
   * Translate message information to the system internal fomat and push them to reservation orchestrator
 * Reservation Orchestrator
-  * Receive user requests from the user interaction quantum and return relevant information
-  * Receive user commands from the user interaction quantum and update trip accordingly
+  * Receive user requests from the user agent and return relevant information
+  * Receive user commands from the user quantum and update trips/reservations accordingly
   * Receive messages from travel notifications and email receivers and update trip accordingly
 * Analytics Capture
-  * Collect analytics data from user interaction, email receiver and travel update receiver quanta and store them for analysis
+  * Collect analytics data from user agent, email receiver and travel update receiver quanta and store them for analysis
   * Anonymize data for use with analytics consumers 
-  * Prepare yearly reports and push them to end users through the user interaction quantum
+  * Prepare yearly reports and push them to end users through the user agent
 
 [Back to Contents](#contents)
 
@@ -190,11 +191,15 @@ TODO: Link to  system wide ADR
 
 ### System-wide Architectural Diagram
 
+The system-wide architecture is depicted in the following diagram. 
+
+![System-wide architectural diagram](assets/overview.png)
+
 ## Quanta and Related Architectures
 
 We then focused on each quantum and discussed the characteristics that it should demonstrate. Here is what we came up with:
 
-### User Interaction Quantum
+### User Agent
 - Deployability: Because we need to be able to perform A/B testing with different versions of the application as features are being added
 - Availability: Because the application must be available 99.99% ("four nines") of the time
 - Performance: To allow for 0.8s and 1.4s response time in Web and Mobile 

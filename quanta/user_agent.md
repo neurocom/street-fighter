@@ -1,4 +1,4 @@
-# User Interaction Quantum
+# User Agent
 
 The following diagram describes the architecture for the Web and mobile application, as well as the communication with each of the required services
 <p style="text-align:center">

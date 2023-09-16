@@ -45,7 +45,7 @@ Stateless module that handles the delivery of notification through multiple noti
 (email,sms,mobile-app)
 
 ### Reservation API
-Please refer to [Reservation API](user_interaction_quantum.md#reservation-api)
+Please refer to [Reservation API](user_agent.md#reservation-api)
 
 ## Related ADRs
 - [ADR07 External-API-Integration](../adrs/external-api-integration.md)
