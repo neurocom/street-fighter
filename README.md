@@ -91,6 +91,7 @@ This is the final list along with each quantum responsibilities
   * Store and publish user profiles
   * Push notifications
   * Share content to social media via related APIs
+  * Redirect user to preferred agent website (retrieved from user profile) when asking for help
 * Travel Updates Receiver
   * Connect with travel agent and travel systems
   * Receive notifications and filter the ones of interest

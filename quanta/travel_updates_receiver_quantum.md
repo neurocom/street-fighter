@@ -22,13 +22,15 @@ Stateless component that handles filtering of events
 - discards duplicate events (may receive same update from multiple external sources) using small in-memory cache
 - filter events that are out of scope for our domain
 
+## Architectural Style Preferred
+Event Driven Architecture
+
+## Related ADRs
+- [ADR07 External-API-Integration](../adrs/external-api-integration.md)
+- [ADR09 Message Broker](../adrs/message-broker.md)
 
 ## Reservation update event processing - Sequence diagram
 
 The following sequence diagram demonstrates how the agent processes an update event, in coordination with other quanta.
 
 ![Travel Update Reception](../seq-diagrams/travel-update-reception.png)
-
-## Related ADRs
-- [ADR07 External-API-Integration](../adrs/external-api-integration.md)
-- [ADR09 Message Broker](../adrs/message-broker.md)

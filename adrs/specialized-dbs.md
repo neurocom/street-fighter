@@ -10,7 +10,7 @@ loosely coupled and can be deployed independently there are a perfect fit for su
 
 - Specialized databases are often tailored for specific performance requirements (performance)
 - More suitable for high-traffic or data-intensive applications (responsiveness,elasticity)
-- Easier to scale since individual database don’t impact other services in the context of microservices (scalability)
+- Easier to scale since individual databases don’t impact other services in the context of microservices (scalability)
 
 ## Cons
 

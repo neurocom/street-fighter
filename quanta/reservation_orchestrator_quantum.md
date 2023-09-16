@@ -33,9 +33,15 @@ Stateless module that curates reservation record events to produce a notificatio
 ### Notification Sender
 
 Stateless module that handles the delivery of notification through multiple notification channels
-(email,sms,mobile-app)
+(email, sms, mobile-app)
 
-# Alternative 
+## Architectural Style Preferred
+Hybrid: Microservices - Event Driven Architecture
+
+### Other Considerations
+- We also considered a service oriented architecture due to the low performance requirements originating from our assumptions. That would considerably reduce complexity of the quantum, with a single component and a single database handling reservations/trips.
+- In such a scenario the notification sender would be moved to the user agent (in any case an external notification API for mobile devices could be used).
+
 ## Related ADRs
 - [ADR08 CQRS](../adrs/cqrs.md)
 - [ADR09 Message Broker](../adrs/message-broker.md)

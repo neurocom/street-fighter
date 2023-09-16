@@ -5,7 +5,6 @@ The following diagram describes the architecture for the Web and mobile applicat
 <img width="1000" src="../assets/user_agent.png">
 </p>
 
-
 ## Components
 
 ### User Facing API Gateway
@@ -28,12 +27,8 @@ It manages:
 - User specific configuration, such as locale (language, currency, etc.) and other preferences
 - Privacy settings
 
-
-## User initiated action - Sequence diagram
-
-The following sequence diagram demonstrates how the agent fullfils a CRUD operation by the user.
-
-![Road Warrior Initiated CRUD Sequence Diagram](../seq-diagrams/road-warrior-initiated-crud.png)
+## Architectural Style Preferred
+Microservices 
 
 ## Related ADRs
 - [ADR02 API-Gateway](../adrs/api-gateway.md)
@@ -41,3 +36,9 @@ The following sequence diagram demonstrates how the agent fullfils a CRUD operat
 - [ADR04 Rest](../adrs/rest.md)
 - [ADR05 Web and Native Mobile Apps](../adrs/web-mobile-application.md)
 - [ADR06 Server Sent Events](../adrs/server-sent-events.md)
+
+## User initiated action - Sequence diagram
+
+The following sequence diagram demonstrates how the agent fullfils a CRUD operation by the user.
+
+![Road Warrior Initiated CRUD Sequence Diagram](../seq-diagrams/road-warrior-initiated-crud.png)

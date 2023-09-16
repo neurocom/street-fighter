@@ -16,14 +16,11 @@ The following diagram describes the architecture for the Email Receiver in detai
 
 ### Mail Filtering
 - Monitors the mail queue for new email messages fetched by the Mail Receiver.
-- Implements a filtering mechanism that checks incoming emails against a whitelist with the email addresses of the most popular travel agencies (airlines, hotels, car rentals) provided by the system and a user's configured list of email addresses. 
+- Implements a filtering mechanism that checks incoming emails against a whitelist with the email addresses of the most popular travel agencies (airlines, hotels, car rentals) provided by the system. 
 - Utilizes NLP libraries (e.g., Apache OpenNLP, StanfordNLP) to extract relevant information from the email content and filter out non travel related emails. 
 - The Mail Filtering component will be implemented as a serverless Lambda function. Serverless is suitable for this component because it responds to individual email events, requires auto-scaling, and can leverage event-driven triggers.
 
-#### Other Considerations
-- We also considered an implementation using webhooks for a more efficient and responsive approach to email event handling.
-- We also considered a functionality where the user will use a Road Warrior domain email for all the travel related communications. In this scenario all the incoming emails will be routed to the Mail Parsing and forwarded to the personal emails of the user.
-- Both alternatives, despite improving the privacy of the users and the performance, were not selected because they would add complexity to the user. 
+
 
 ### Mail Parsing
 - Analyzes the content of the filtered emails to identify reservation-related information.
@@ -41,9 +38,15 @@ The following diagram describes the architecture for the Email Receiver in detai
 ## Communications Between Components
 Communication between components will be facilitated through REST APIs and messaging queues. 
 
+
 ## Architectural Style Preferred
 Hybrid: Microservices - Event Driven Architecture
 
+### Other Considerations
+- We also considered an implementation using webhooks for a more efficient and responsive approach to email event handling.
+- We also considered a functionality where the user will use a Road Warrior domain email for all the travel related communications. In this scenario all the incoming emails will be routed to the Mail Parsing and forwarded to the personal emails of the user.
+- Both alternatives, despite improving the privacy of the users and the performance, were not selected because they would add complexity to the user.
+ 
 ## Related ADRs
 - [ADR01 Hybrid Architecture](../adrs/hybrid.md)
 - [ADR16 Mail Polling](../adrs/mail_polling.md)
