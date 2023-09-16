@@ -34,6 +34,8 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
 </td>
 <td valign="top" style="vertical-align:top">
 
+**[5. Deployment](#deployment)**
+
 **[6. ADRs](#adrs)**
 * [ADR01 Hybrid Architecture](adrs/hybrid.md)
 * [ADR02 API-Gateway](adrs/api-gateway.md)
@@ -268,12 +270,13 @@ We identified the top architectural characteristics of this quantum to be the fo
 ## Deployment
 
 Deploying our system using containerized applications or serverless functions  offers a flexible and efficient
-approach to streamline application [deployment](adrs/deploy-options.md) process.
+approach to streamline application deployment process ([ADR13 Deploy Options](adrs/deploy-options.md)).
+
 Kubernetes has become increasingly popular due to the numerous benefits it offers
 for managing containerized workloads in a scalable, resilient, and automated manner.
 It becomes an even more attractive choice for our system since we can setup and utilize a service mesh (e.g. Istio)
 which complements container orchestration handling of Kubernetes by addressing service-to-service communication,
-security, and [observability challenges](adrs/monitoring.md)
+security, and observability challenges ([ADR15 Monitoring](adrs/monitoring.md))
 
 Finally, it makes sense to utilize a managed Kubernetes service to run Kubernetes in the cloud and on-premises data centers
-in hybrid fashion to reduce costs, but also to achieve geographical distribution and [enhanced availability](adrs/availability-deploy-concerns.md)
+in hybrid fashion to reduce costs, but also to achieve geographical distribution and enhanced availability ([ADR14 Availability Deploy Concerns](adrs/availability-deploy-concerns.md))
