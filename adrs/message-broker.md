@@ -1,24 +1,24 @@
 # Message Broker
 
-## Decision:
+## Decision
 
 Usage of message broker as a central component of the event-driven architecture to capitalize its inherent 
 features needed to build scalable, responsive, and loosely coupled systems that enable the asynchronous communication 
 and coordination of events among different parts of a system
 
-## Pros:
+## Pros
 
 - Facilitates asynchronous communication between different parts of a system, decoupling services (loose coupling, fault tolerance)
 - Absorb traffic spikes (availability)
 - Allows for easy scale of the system (scalability)
 - Decouple the sender of a message (producer) from its receiver (consumer) (interoperability)
 
-## Cons:
+## Cons
 
 - Performance implications due to increased latency(indirection) in the communication of services (performance)- 
 - Running and maintaining a message broker can be resource-intensive (cost)
 
-## Justification:
+## Justification
 
 Message brokers remain a valuable tool for building scalable, responsive, and loosely coupled systems. 
 Rightfully considered an essential part of an architecture that favors availability and fault tolerance, since

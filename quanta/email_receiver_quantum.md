@@ -48,5 +48,5 @@ Communication between components will be facilitated through well-defined APIs (
 Hybrid: Microservices - Event Driven Architecture
 
 ## Related ADRs
-- [Hybrid Architecture](../adrs/hybrid.md)
+- [ADR06 Hybrid Architecture](../adrs/hybrid.md)
 

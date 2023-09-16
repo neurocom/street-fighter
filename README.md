@@ -8,7 +8,7 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
 <table border="0">
 
  <tr style="vertical-align:top">
-    <td>
+    <td valign="top" style="vertical-align:top">
 
 **[1. About us](#about-us)**
 
@@ -18,26 +18,43 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
 
 **[3. Domain Design](#domain-design)**
 * [3.1. Actors and Use Cases](#use-cases)
-* [3.2. Quantum Identification](#quantum-identification)
+* [3.2. Quanta Identification](#quanta-identification)
 
-**[4. System Architecture](#system-architecture)**
+**[4. Architecture](#architecture)**
 * [4.1. System-wide architecture](#system-wide-architecture)
     * [4.1.1. Drivers](#drivers)
-    * [4.1.2. Architecture Characteristics](#architecture-characteristics)
+    * [4.1.2. System-wide Architecture Characteristics](#system-wide-architecture-characteristics)
     * [4.1.3. Selected architecture](#selected-architecture)
-* [4.2. Quantum Architectures](#quantum-architectures)
+* [4.2. Quanta and Related Architectures](#quanta-and-related-architectures)
     * [4.2.1. User Interaction Quantum](quanta/user_interaction_quantum.md)
     * [4.2.2 Travel Notifications Receiver](quanta/travel_notifications_receiver_quantum.md)
     * [4.2.4 Email Receiver](quanta/email_receiver_quantum.md)
     * [4.2.5 Reservation Orchestrator](quanta/reservation-orchestrator-quantum.md)
     * [4.2.6 Analytics Capture](quanta/analytics_capture_quantum.md)
-* **** Analytics Collector Maybe *****?
-    * [4.2.7 Activity Summarizer](#activity-summarizer)
 
-**[6. Sequence Diagrams](#sequence-diagrams)**
-* [6.1. Road warrior initiated CRUD](#road-warrior-initiated-crud)
-* [6.2 Notification Reception]()
-* [6.3 Yearly Report Generation](#yearly-report-generation)
+**[5. Sequence Diagrams](#sequence-diagrams)**
+* [5.1. Road warrior initiated CRUD](#road-warrior-initiated-crud)
+* [5.2 Notification Reception]()
+* [5.3 Yearly Report Generation](#yearly-report-generation)
+
+</td>
+<td valign="top" style="vertical-align:top">
+
+**[6. ADRs](#adrs)**
+* [ADR01 API-Gateway](adrs/api-gateway.md)
+* [ADR02 CDN](adrs/cdn.md)
+* [ADR03 Rest](adrs/rest.md)
+* [ADR04 Web and Native Mobile Apps](adrs/web-mobile-application.md)
+* [ADR05 Deploy Options](adrs/deploy-options.md)
+* [ADR06 Hybrid Architecture](adrs/hybrid.md)
+* [ADR07 External-API-Integration](adrs/external-api-integration.md)
+* [ADR08 CQRS](adrs/cqrs.md)
+* [ADR09 Message Broker](adrs/message-broker.md)
+* [ADR10 Specialized DBs](adrs/specialized-dbs.md)
+* [ADR11 Server Sent Events](adrs/server-sent-events.md)
+* [ADR12 Analytics OLAP](adrs/analytics.md)
+* [ADR13 GDPR](adrs/gdpr.md)
+
     </td>
  </tr>
 </table>
@@ -70,17 +87,17 @@ Keep in mind the vision and consider how the platform will embrace trains, buses
 
 The identified actors and use cases appear in the following diagram
 
-![Use Case Diagram](general/use-case-diagram.png)
+![Use Case Diagram](assets/use-case-diagram.png)
 
 Which led to the identification of the initial building blocks of the system
 
-![Building Blocks](general/overview_diagram.drawio.png)
+![Building Blocks](assets/overview_diagram.drawio.png)
 
 [Back to Contents](#contents)
 
-## Quantum Identification
+## Quanta Identification
 
-We considered in our early discussions that there are several parts in the application that should exhibit different characteristics (please see also [below](#system-architecture)).
+We considered in our early discussions that there are parts in the system that should exhibit different characteristics (please see also [below](#architecture)).
 
 Based on this observation and the initial building blocks, we utilized the quantum concept (https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch07.html#sec-quantum-def) during our analysis to identify the different parts of the platform that serve different needs and demonstrate those characteristics.
 
@@ -90,6 +107,7 @@ This the final list along with each quantum responsibilities
   * Interact with the user (display dashboard, receive commands etc.)
   * Capture analytics metrics
   * Push notifications
+  * Share content to social media via related APIs
 * Travel Updates Receiver
   * Connect with travel agent and travel systems
   * Receive notifications and filter the ones associated with active reservations
@@ -109,9 +127,9 @@ This the final list along with each quantum responsibilities
 
 [Back to Contents](#contents)
 
-# System Architecture
+# Architecture
 
-## Overall Architecture
+## System-Wide Architecture
 
 ### Drivers
 
@@ -123,15 +141,15 @@ This the final list along with each quantum responsibilities
 * 5 minutes end to end update limit
 
 #### Assumptions
-We assume that most, e.g. 80%, of the users will mostly interact with the app within an e.g. a four - hour time frame in working days corresponding to 1.6M users accessing the site in 5 * 4 * 3600 = 72K sec, leading to an expected number of 25 requests / second. 
+We assume that most, e.g. 80%, of the users will mostly interact with the app within a four - hour time frame in working days corresponding to 1.6M users accessing the site in 5 * 4 * 3600 = 72K sec, leading to an expected number of 25 requests / second. 
 
 We do not expect a sudden burst of requests, maybe an increase in holiday periods but certainly not something we will make us have to respond immediately.
 
-Assuming an average of 5 reservations per active user (to accommodate e.g. attractions or events) and an average trip duration of two weeks we expect 2 million * 5 = 10 million reservations per two weeks = 5 million per week (~250 million reservations per year).
+Assuming an average of 5 reservations per active user (to accommodate attractions or events) and an average trip duration of two weeks we expect 2 million * 5 = 10 million reservations per two weeks = 5 million per week (~250 million reservations per year).
 
 We expect on average 5 updates per reservation => 25 million relevant update events per week (of course the updates we will have to process will be much higher. Suppose we have captured 5% of the market we expect 20 times this number in total, leading to 500 million update events per week).
 
-Email parsing, if we consider the 'share your mailbox approach' are much more challenging. Suppose 30% of our users have opted in for this option and that the average user receives 100 emails per day, we need to filter 30% * 5M * 100 = 150M emails per day. 
+Email parsing, if we consider the 'share your mailbox approach' is much more challenging. Suppose 30% of our users have opted in for this option and that the average user receives 100 emails per day, we need to filter 30% * 5M * 100 = 150M emails per day. 
 
 #### Additional Drivers
 
@@ -140,7 +158,7 @@ Email parsing, if we consider the 'share your mailbox approach' are much more ch
 
 [Back to Contents](#contents)
 
-### Overall Architecture Characteristics
+### System-Wide Architecture Characteristics
 
 Given the above we have identified the following top three architecture characteristics:
 
@@ -169,46 +187,44 @@ TODO: Link to  system wide ADR
 
 [Back to Contents](#contents)
 
-## Quanta Architectures
+### System-wide Architectural Diagram
 
-Note: Critical path 5 min - Availability + End to end performance
+
+## Quanta and Related Architectures
+
 We then focused on each quantum and discussed the characteristics that it should demonstrate. Here is what we came up with:
 
-[Back to Contents](#contents)
-
 ### User Interaction Quantum
-Deployability: Because we need to be able to perform A/B testing with different versions of
-Availability: Because the application must be available
-Performance:
+- Deployability: Because we need to be able to perform A/B testing with different versions of
+- Availability: Because the application must be available
+- Performance:
 
 Architectural Style: Service Oriented
 
-[Back to Contents](#contents)
+[View Details](quanta/travel_updates_receiver_quantum.md)
 
 #### Travel Notifications Receiver
-Interoperability: Because we need to be able to interface with as many sources of relevant information as possible.
-Availability: Because we expect API notifications (especially from Sabre/Apollo) to arrive much faster than emails and be 100% accurate.
-Scalability: Because we will add additional data sources as time goes by.
+- Interoperability: Because we need to be able to interface with as many sources of relevant information as possible.
+- Availability: Because we expect API notifications (especially from Sabre/Apollo) to arrive much faster than emails and be 100% accurate.
+- Scalability: Because we will add additional data sources as time goes by.
 
 Others considered:
 
-Architectural Style: Microservices (Pipeline ???)
+Architectural Style: Microservices (Pipeline)
 
-[Back to Contents](#contents)
+[View Details](quanta/travel_updates_receiver_quantum.md)
 
 #### Email receiver
-Top:
- Reliability:  Because we consider very important that the platform identifies reservations rather than the user creates them through the user interface.
- Availability: Because of possible API non-existence for some travel agents and possible interruptions in Sabre/Appolo. Email will be our last resort.
- Performance:  Because we have to process a lot more emails to identify the ones that are really relevant. Also we will need to process emails of all users, including inactive ones, at all times.
- Scalability:  Since we expect to go international - and we consider growth is a key metric for any startup - and email volume will be a multiple of user growth. 
+- Reliability:  Because we consider very important that the platform identifies reservations rather than the user creates them through the user interface.
+- Availability: Because of possible API non-existence for some travel agents and possible interruptions in Sabre/Appolo. Email will be our last resort.
+- Performance:  Because we have to process a lot more emails to identify the ones that are really relevant. Also we will need to process emails of all users, including inactive ones, at all times.
+- Scalability:  Since we expect to go international - and we consider growth is a key metric for any startup - and email volume will be a multiple of user growth. 
 
 Others considered:
- Fault tolerance: Not deemed important because 
 
 Architectural Style: Hybrid: Microservices - Event Driven Architecture
 
-[Back to Contents](#contents)
+[View Details](quanta/email_receiver_quantum.md)
 
 #### Reservations Orchestrator
  Data Consistency: To provide accurate and up to date information to the user.
@@ -216,13 +232,17 @@ Architectural Style: Hybrid: Microservices - Event Driven Architecture
 
 Architectural Style: Service Oriented?
 
-#### Analytics Collector
- Fault
- Configurability: To allow internationalization, different currencies etc. etc.
+[View Details](quanta/reservation-orchestrator-quantum.md)
+
+#### Analytics Capture
+- Deployability: To accomodate processing of new information and constantly adding report functionality
+- Configurability: To allow internationalization, different currencies . etc.
 
 Architectural Style: Service Oriented
 
-#### Activity Summarizer
+[View Details](quanta/analytics_capture_quantum.md)
+
+[Back to Contents](#contents)
 
 # Sequence Diagrams
 
