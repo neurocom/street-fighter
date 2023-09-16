@@ -280,6 +280,11 @@ We identified the top architectural characteristics of this quantum to be the fo
 
 ## Deployment
 
+Deployment strategy is an important aspect of software architecture as it impacts several aspects
+of our architectural considerations such as cost, availability, scalability, reliability.  
+Our target is to leverage the advantages of cloud infrastructure and Kubernetes orchestration,
+and its inherent flexibility, scalability to meet the demands of today's dynamic computing environments.
+
 Deploying our system using containerized applications or serverless functions  offers a flexible and efficient
 approach to streamline application deployment process ([ADR13 Deploy Options](adrs/deploy-options.md)).
 
