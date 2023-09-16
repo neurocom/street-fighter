@@ -23,9 +23,9 @@ Stateless component that handles filtering of events
 - filter events that are out of scope for our domain
 
 
-### Sequence Diagram
+## Reservation update event processing - Sequence diagram
 
-The following sequence diagram demonstrates how the agent processes an update event.
+The following sequence diagram demonstrates how the agent processes an update event, in coordination with other quanta.
 
 ![Travel Update Reception](../seq-diagrams/travel-update-reception.png)
 

@@ -37,23 +37,7 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
 
 **[5. Deployment](#deployment)**
 
-**[6. ADRs](#adrs)**
-* [ADR01 Hybrid Architecture](adrs/hybrid.md)
-* [ADR02 API-Gateway](adrs/api-gateway.md)
-* [ADR03 CDN](adrs/cdn.md)
-* [ADR04 Rest](adrs/rest.md)
-* [ADR05 Web and Native Mobile Apps](adrs/web-mobile-application.md)
-* [ADR06 Server Sent Events](adrs/server-sent-events.md)
-* [ADR07 External-API-Integration](adrs/external-api-integration.md)
-* [ADR08 CQRS](adrs/cqrs.md)
-* [ADR09 Message Broker](adrs/message-broker.md)
-* [ADR10 Specialized DBs](adrs/specialized-dbs.md)
-* [ADR11 Analytics OLAP](adrs/analytics.md)
-* [ADR12 GDPR](adrs/gdpr.md)
-* [ADR13 Deploy Options](adrs/deploy-options.md)
-* [ADR14 Availability Deploy Concerns](adrs/availability-deploy-concerns.md)
-* [ADR15 Monitoring](adrs/monitoring.md)
-* [ADR16 Mail Polling](adrs/mail_polling.md)
+**[6. ADRs](#list-of-architecture-decision-records-adrs)**
 
     </td>
  </tr>
@@ -97,9 +81,7 @@ Which led to the identification of the initial building blocks of the system
 
 ## Quanta Identification
 
-We considered in our early discussions that there are parts in the system that should exhibit different characteristics (please see also [below](#architecture)).
-
-Based on this observation and the initial building blocks, we utilized the quantum concept (https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch07.html#sec-quantum-def) during our analysis to identify the different parts of the platform that serve different needs and demonstrate those characteristics.
+We utilized the quantum concept (https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch07.html#sec-quantum-def) during our analysis to identify parts of the system that serve different needs and demonstrate different characteristics.
 
 This is the final list along with each quantum responsibilities 
 
@@ -111,12 +93,12 @@ This is the final list along with each quantum responsibilities
   * Share content to social media via related APIs
 * Travel Updates Receiver
   * Connect with travel agent and travel systems
-  * Receive notifications and filter the ones associated with active reservations
+  * Receive notifications and filter the ones of interest
   * Translate notifications to the system internal format and push them to the reservation orchestrator
 * Email Receiver
   * Connect to our email server and poll for forwarded reservations
   * Connect to user mailboxes and filter out travel related emails (reservation + updates)
-  * Translate message information to the system internal fomat and push them to reservation orchestrator
+  * Translate message information to the system internal format and push them to reservation orchestrator
 * Reservation Orchestrator
   * Receive user requests from the user agent and return relevant information
   * Receive user commands from the user quantum and update trips/reservations accordingly
@@ -171,11 +153,11 @@ Given the above we have identified the following top three architecture characte
 
 Additional applicable characteristics that we considered were:
 
-* Performance especially with regard to external information sources: We decided to address it in the quantum level
+* Performance (especially with regard to external information sources): We decided to address it in the quantum level
 * Deployability: To allow us to quickly onboard new travel agents and reservation types. This will be aided by allowing each quantum to be deployed separately (and possibly in parallel).
 * Fault Tolerance: To allow the system to operate in case of e.g. network issues with external agents / travel systems and/or email providers. We consider that we can address this issue with the CRUD operation provided to the end user as well as the option to parse email updates on top of confirmation emails.
 * Data Consistency: To avoid false notifications to alarm the user or miss important information. Again, we decided to address this issue in the corresponding quanta.
-* Security, we did not identify a specific security requirement (apart from GDPR which we addressed in the analytics quantum) and email sharing which we expect to be standardized.
+* Security: we did not identify a specific security requirement (apart from GDPR which we addressed in the analytics quantum) and email sharing which we expect to be standardized.
 
 ### Selected Architecture
 
@@ -189,7 +171,7 @@ We decided to select a [hybrid microservices event-driven architecture](adrs/hyb
 
 ### System-wide Architectural Diagram
 
-The system-wide architecture is depicted in the following diagram. 
+The system-wide architecture is depicted in the following diagram
 
 ![System-wide architectural diagram](assets/overview.png)
 
@@ -236,7 +218,6 @@ The following diagram describes the architecture for the travel updates receiver
 We identified the top architectural characteristics of this quantum to be the following:
 
 - Interoperability: Because we need to be able to interface with as many sources of relevant information as possible.
-- **Data Consistency ????? : Because we expect API notifications (especially from Sabre/Apollo) to arrive much faster than emails and be 100% accurate.**
 - Scalability: Because we will add additional data sources as time goes by.
 
 More details for the travel updates receiver quantum can be found here:
@@ -245,7 +226,7 @@ More details for the travel updates receiver quantum can be found here:
 [Back to Contents](#contents)
 
 #### Email receiver
-The following diagram describes the architecture for the email receiver quantum.
+The following diagram describes the architecture of the email receiver quantum
 
 ![Email Receiver Quantum Architectural Diagram](assets/mailflow.png)
 
@@ -253,7 +234,7 @@ We identified the top architectural characteristics of this quantum to be the fo
 
 - Performance:  Because we have to process a lot more emails to identify the ones that are really relevant. Also we will need to process emails of all users, including inactive ones, at all times.
 - Scalability:  Since we expect to go international - and we consider growth is a key metric for any startup - email volume will be a multiple of user growth. 
-- Availability: Because: 
+- Availability: Because 
   - the majority of reservations will arrive via email 
   - some travel agents might not provide APIs 
   - possible downtime in API communication will render email our last resort for updates.
@@ -293,6 +274,7 @@ for managing containerized workloads in a scalable, resilient, and automated man
 It becomes an even more attractive choice for our system since we can setup and utilize a service mesh (e.g. Istio)
 which complements container orchestration handling of Kubernetes by addressing service-to-service communication,
 security, and observability challenges ([ADR15 Monitoring](adrs/monitoring.md))
+
 
 Finally, it makes sense to utilize a managed Kubernetes service to deploy our system in the cloud 
 using Kubernetes clusters across multiple geographic regions or data centers to achieve objectives 

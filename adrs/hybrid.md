@@ -10,7 +10,7 @@ easy decoupling of services by exchanging messages asynchronously and promoting 
 
 - Services can be scaled horizontally easily, adding more instances for targeted services utilizing cost-efficient infrastructure (scalability, elasticity)
 - Better availability, since infrastructure setup can cope with delays on requests and achieve better fault isolation, isolate the problem and mitigate it (availability, fault tolerance, loose coupling)
-- Improving engineering velocity and organizational decoupling, since services can be implemented separately have smaller codebase and also deployed in their own timeline (testability, deployability)
+- Improving engineering velocity and organizational decoupling, since services can be implemented separately, have smaller codebase and also deployed in their own timeline (testability, deployability)
 
 ## Cons
 

@@ -35,6 +35,7 @@ Stateless module that curates reservation record events to produce a notificatio
 Stateless module that handles the delivery of notification through multiple notification channels
 (email,sms,mobile-app)
 
+# Alternative 
 ## Related ADRs
 - [ADR08 CQRS](../adrs/cqrs.md)
 - [ADR09 Message Broker](../adrs/message-broker.md)

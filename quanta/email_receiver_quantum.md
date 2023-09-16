@@ -5,8 +5,6 @@ The following diagram describes the architecture for the Email Receiver in detai
 <img width="1000" src="../assets/mailflow.png">
 </p>
 
-
-
 ## Components
 
 ### Mail Receiver

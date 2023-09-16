@@ -29,7 +29,7 @@ It manages:
 - Privacy settings
 
 
-### Sequence Diagram
+## User initiated action - Sequence diagram
 
 The following sequence diagram demonstrates how the agent fullfils a CRUD operation by the user.
 
