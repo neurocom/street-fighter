@@ -191,8 +191,7 @@ We identified the top architectural characteristics of this quantum to be the fo
 - Performance: To allow for 0.8s and 1.4s response time in Web and Mobile 
 - Configurability: To allow internationalization, different currencies etc.
 
-More details for the user agent quantum can be found here:
-[User Agent Quantum Details](quanta/user_agent.md)
+More details for the user agent quantum can be found here: [User Agent Quantum Details](quanta/user_agent.md)
 
 [Back to Contents](#contents)
 
@@ -205,9 +204,9 @@ We identified the top architectural characteristics of this quantum to be the fo
 - Data Consistency: To provide accurate and up-to-date information to the user.
 - Availability: Because it is the central component in the 'critical path' of the user's experience.
 
-More details for the reservations orchestrator component can be found here:
+More details for the reservations orchestrator component can be found here: [Reservations Orchestrator Quantum Details](quanta/reservation_orchestrator_quantum.md)
 
-[Reservations Orchestrator Quantum Details](quanta/reservation_orchestrator_quantum.md)
+[Back to Contents](#contents)
 
 #### Travel Updates Receiver
 The following diagram describes the architecture for the travel updates receiver quantum
@@ -277,6 +276,8 @@ security, and observability challenges ([ADR15 Monitoring](adrs/monitoring.md))
 
 Finally, it makes sense to utilize a managed Kubernetes service to deploy our system in the cloud using Kubernetes clusters across multiple geographic regions or data centers to achieve objectives like high availability, fault tolerance, and reduced latency. ([ADR14 Availability Deploy Concerns](adrs/availability-deploy-concerns.md))
 
+[Back to Contents](#contents)
+
 ## List of Architecture Decision Records (ADRs)
 
 The following list contains architecture decision records (ADRs) created as part of the architecture design process in the system or quantum level. 
@@ -297,3 +298,5 @@ The following list contains architecture decision records (ADRs) created as part
 * [ADR14 Availability Deploy Concerns](adrs/availability-deploy-concerns.md)
 * [ADR15 Monitoring](adrs/monitoring.md)
 * [ADR16 Mail Polling](adrs/mail_polling.md)
+
+[Back to Contents](#contents)
