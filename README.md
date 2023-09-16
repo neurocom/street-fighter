@@ -27,7 +27,7 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
     * [4.1.3. Selected architecture](#selected-architecture)
 * [4.2. Quantum Architectures](#quantum-architectures)
     * [4.2.1. User Interaction Quantum](quanta/user_interaction_quantum.md)
-    * [4.2.2 Travel Notifications Receiver](quanta/travel_notifications_receiver_quantum.md)
+    * [4.2.2 Travel Notifications Receiver](quanta/travel_updates_receiver_quantum.md)
     * [4.2.4 Email Receiver](quanta/email_receiver_quantum.md)
     * [4.2.5 Reservation Orchestrator](quanta/reservation-orchestrator-quantum.md)
     * [4.2.6 Analytics Capture](quanta/analytics_capture_quantum.md)
