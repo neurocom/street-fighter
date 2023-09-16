@@ -87,11 +87,11 @@ Keep in mind the vision and consider how the platform will embrace trains, buses
 
 The identified actors and use cases appear in the following diagram
 
-![Use Case Diagram](general/use-case-diagram.png)
+![Use Case Diagram](assets/use-case-diagram.png)
 
 Which led to the identification of the initial building blocks of the system
 
-![Building Blocks](general/overview_diagram.drawio.png)
+![Building Blocks](assets/overview_diagram.drawio.png)
 
 [Back to Contents](#contents)
 
