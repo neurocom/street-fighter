@@ -1,6 +1,5 @@
 # Architectural Katas - Fall 2023
 
-
 This repository is our solution to the Fall 2023 [O'Reilly Architectural Katas Challenge](https://learning.oreilly.com/live-events/architectural-katas/0636920097101/0636920097100/).
 
 The goal of the challenge is to enable Road Warrior, a startup aspiring to be a single source of truth for all things related to the trips of its users, to meet its objective.
@@ -27,11 +26,11 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
     * [4.1.2. Architecture Characteristics](#architecture-characteristics)
     * [4.1.3. Selected architecture](#selected-architecture)
 * [4.2. Quantum Architectures](#quantum-architectures)
-    * [4.2.1. User Interaction Quantum](quantums/user_interaction_quantum.md)
-    * [4.2.2 Travel Notifications Receiver](quantums/travel_notifications_receiver_quantum.md)
-    * [4.2.4 Email Receiver](quantums/email_receiver_quantum.md)
-    * [4.2.5 Reservation Orchestrator](quantums/reservation-orchestrator-quantum.md)
-    * [4.2.6 Analytics Capture](quantums/analytics_capture_quantum.md)
+    * [4.2.1. User Interaction Quantum](quanta/user_interaction_quantum.md)
+    * [4.2.2 Travel Notifications Receiver](quanta/travel_notifications_receiver_quantum.md)
+    * [4.2.4 Email Receiver](quanta/email_receiver_quantum.md)
+    * [4.2.5 Reservation Orchestrator](quanta/reservation-orchestrator-quantum.md)
+    * [4.2.6 Analytics Capture](quanta/analytics_capture_quantum.md)
 * **** Analytics Collector Maybe *****?
     * [4.2.7 Activity Summarizer](#activity-summarizer)
 
@@ -71,11 +70,11 @@ Keep in mind the vision and consider how the platform will embrace trains, buses
 
 The identified actors and use cases appear in the following diagram
 
-![Use Case Diagram](general/use-case-diagram.svg)
+![Use Case Diagram](general/use-case-diagram.png)
 
 Which led to the identification of the initial building blocks of the system
 
-![Building Blocks](general/overview_diagram.drawio.svg)
+![Building Blocks](general/overview_diagram.drawio.png)
 
 [Back to Contents](#contents)
 
@@ -102,10 +101,9 @@ This the final list along with each quantum responsibilities
   * Receive user commands from the user interaction quantum and update trip accordingly
   * Receive messages from travel notifications and email receivers and update trip accordingly
 * Analytics Capture
-  * Collect analytics data from user interaction, email receiver and travel update receiver quantums and store them for analysis
-  * Anonymize data for use with analytics consumers ???and provide them through a dedicated API??? HOW?
+  * Collect analytics data from user interaction, email receiver and travel update receiver quanta and store them for analysis
+  * Anonymize data for use with analytics consumers 
   * Prepare yearly reports and push them to end users through the user interaction quantum
-* (SHOULD WE SEPARATE ANALYTICS COLLECTION FROM YEARLY REPORTS? THEY DO SEPARATE JOBS - ALSO DO WE NEED A SE) => Activity Summarizer
 
 [Back to Contents](#contents)
 
@@ -115,6 +113,31 @@ This the final list along with each quantum responsibilities
 
 
 ### Drivers
+
+#### Key Metrics
+* 2 Million Weekly Active Users
+* 15 Million Total Users
+* 800 ms web response time
+* 1.4 sec mobile app contentful paint
+* 5 minutes end to end update limit
+
+### Assumptions
+We assume that most, e.g. 80%, of the users will mostly interact with the app within an e.g. a four - hour time frame in working days corresponding to 1.6M users accessing the site in 5 * 4 * 3600 = 72K sec, leading to an expected number of 25 requests / second. 
+
+We do not expect a sudden burst of requests, maybe an increase in holiday periods but certainly not something we will make us have to respond immediately.
+
+Assuming an average of 5 reservations per active user (to accommodate e.g. attractions or events) and an average trip duration of two weeks we expect 2 million * 5 = 10 million reservations per two weeks = 5 million per week (~250 million reservations per year).
+
+We expect on average 5 updates per reservation => 25 million relevant update events per week (of course the updates we will have to process will be much higher. Suppose we have captured 5% of the market we expect 20 times this number in total, leading to 500 million update events per week).
+
+Email parsing, if we consider the 'share your mailbox approach' are much more challenging. Suppose 30% of our users have opted in for this option and that the average user receives 100 emails per day, we need to filter 30% * 5M * 100 = 150M emails per day. 
+
+
+
+
+
+
+
 
 [Back to Contents](#contents)
 
@@ -134,7 +157,7 @@ Scalability: To support future growth
 Others considered:
 Security, which we considered as implicit in the solution
 
-Since we have several quantums with different performance characteristics, and considering the system as a whole, we decided to choose a distributed, event-driven architecture.
+Since we have several quanta with different performance characteristics, and considering the system as a whole, we decided to choose a distributed, event-driven architecture.
 
 TODO: Link to  system wide ADR
 
@@ -201,22 +224,22 @@ The following sequence diagrams demonstrate how core operations are carried out 
 
 ## Road Warrior Initiated CRUD
 
-![Road Warrior Initiated CRUD Sequence Diagram](seq-diagrams/road-warrior-initiated-crud.svg)
+![Road Warrior Initiated CRUD Sequence Diagram](seq-diagrams/road-warrior-initiated-crud.png)
 
 The corresponding diagram for the alternative architecture considered is below
 
-![Road Warrior Initiated CRUD Sequence Diagram - Alternative](seq-diagrams/road-warrior-initiated-crud-alt.svg)
+![Road Warrior Initiated CRUD Sequence Diagram - Alternative](seq-diagrams/road-warrior-initiated-crud-alt.png)
 
 [Back to Contents](#contents)
 
 ## Travel Update Reception
 
-![Travel Update Reception](seq-diagrams/travel-update-reception.svg)
+![Travel Update Reception](seq-diagrams/travel-update-reception.png)
 
 [Back to Contents](#contents)
 
 ## Yearly Report Generation
 
-![Yearly Report Generation](seq-diagrams/yearly-report-generation.svg)
+![Yearly Report Generation](seq-diagrams/yearly-report-generation.png)
 
 [Back to Contents](#contents)
