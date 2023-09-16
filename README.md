@@ -27,9 +27,10 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
     * [4.1.3. Selected architecture](#selected-architecture)
 * [4.2. Quanta and Related Architectures](#quanta-and-related-architectures)
     * [4.2.1. User Agent](#user-agent)
-    * [4.2.2 Travel Updates Receiver](#travel-updates-receiver)
-    * [4.2.3 Email Receiver](#email-receiver)
-    * [4.2.4 Analytics Capture](#analytics-capture)
+    * [4.2.2 ](#travel-updates-receiver)
+    * [4.2.3 Travel Updates Receiver](#travel-updates-receiver)
+    * [4.2.4 Email Receiver](#email-receiver)
+    * [4.2.5 Analytics Capture](#analytics-capture)
 
 </td>
 <td valign="top" style="vertical-align:top">
@@ -213,6 +214,19 @@ More details for the user agent quantum can be found here:
 [User Agent Quantum Details](quanta/user_agent.md)
 
 [Back to Contents](#contents)
+
+#### Reservations Orchestrator
+The following diagram describes the reservations orchestrator quantum
+![Reservations Orchestrator Quantum Architectural Diagram](assets/reservation-orchestrator.png)
+
+We identified the top architectural characteristics of this quantum to be the following:
+
+Data Consistency: To provide accurate and up-to-date information to the user.
+Availability: Because it is the central component in the 'critical path' of the user's experience.
+
+More details for the reservations orchestrator component can be found here:
+
+[Reservations Orchestrator Quantum Details](quanta/reservation_orchestrator_quantum.md)
 
 #### Travel Updates Receiver
 The following diagram describes the architecture for the travel updates receiver quantum
