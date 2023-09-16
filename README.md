@@ -121,7 +121,7 @@ This the final list along with each quantum responsibilities
 * 1.4 sec mobile app contentful paint
 * 5 minutes end to end update limit
 
-### Assumptions
+#### Assumptions
 We assume that most, e.g. 80%, of the users will mostly interact with the app within an e.g. a four - hour time frame in working days corresponding to 1.6M users accessing the site in 5 * 4 * 3600 = 72K sec, leading to an expected number of 25 requests / second. 
 
 We do not expect a sudden burst of requests, maybe an increase in holiday periods but certainly not something we will make us have to respond immediately.
@@ -132,18 +132,24 @@ We expect on average 5 updates per reservation => 25 million relevant update eve
 
 Email parsing, if we consider the 'share your mailbox approach' are much more challenging. Suppose 30% of our users have opted in for this option and that the average user receives 100 emails per day, we need to filter 30% * 5M * 100 = 150M emails per day. 
 
+#### Additional Drivers
 
-
-
-
-
-
+* The system must interoperate with as many as travel agent API's as possible
+* We plan to expand to international markets
 
 [Back to Contents](#contents)
 
 ### Overall Architecture Characteristics
 
-[Back to Contents](#contents)
+Given the above we have identified the following top four architecture characteristics:
+
+* Availability: Since the 
+* Interoperability:
+* Scalability:
+* Configurability:
+
+We additionally considered 
+
 
 ### Selected Architecture
 
