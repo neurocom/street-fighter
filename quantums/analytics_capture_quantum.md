@@ -3,7 +3,7 @@ The analytics capture capability is responsible for monitoring the application's
 - Provide the "end-of-year" summary report to the Road Warriors.
 - Compare the adoption of the service by teservation type and destination compared to industry baselines.
 - Create dashboards on total system usage per use case  
-- Create datamarts with the users preferences per resevation type, airline, rental company etc
+- Create datamarts with the users preferences per resevation type, airline, rental company etc.
 In the future, we should use the Analytics Capture data as a platform for providing insights to companies working in the travel sector. Another possible commercial use is using the affiliate programs of specific vendors when users are sharing their trips to others or via social media   
 
 The following diagram describes the architecture for the Analytics Capture in detail.
@@ -15,8 +15,8 @@ The following diagram describes the architecture for the Analytics Capture in de
 
 ### (De)Anonymizer
 - The (De)Anonymizer reads events from the main architecture broker that provide information origination from road warriors.  
-- It is used as an in-between (Anoymizer) to ensure that the analytics database does not hold information directly linked to users.
-- The Reporting Service API can use the DeAnonymizer to produce the "end-of-year" summary reports  
+- It is used as an in-between (Anoymizer) to ensure that the analytics database does not hold information directly linked to users. This is needed to ensure GDPR Compliance and encance security.
+- The Reporting Service API can use the DeAnonymizer to produce the "end-of-year" summary reports 
 
 ### Collector
 - The collector component is responsible for periodically gathering information from external sources. The collector schedules the information retrieval accordingly, depending on the source and
@@ -38,5 +38,6 @@ The following diagram describes the architecture for the Analytics Capture in de
 Traffic events and reservation events are loaded asynchronously to the OLAP DB database. Information from external sources is smaller in volume, updated less frequently and is loaded synchronously. All report requests are retrieved synchronously by the reporting services.
 
 ## Related ADRs
-- [ADR08 Analytics OLAP](../adrs/analytics.md)
+- [ADR12 Analytics OLAP](../adrs/analytics.md)
+- [ADR13 GDPR](../adrs/gdpr.md)
 
