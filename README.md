@@ -36,9 +36,9 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
     * [4.2.7 Activity Summarizer](#activity-summarizer)
 
 **[6. Sequence Diagrams](#sequence-diagrams)**
-* [6.1. Road warrior initiated CRUD](seq-diagrams/road-warrior-initiated-crud.svg)
-* [6.2 Notification Reception](seq-diagrams/notification-reception.svg)
-* [6.3 Yearly Report Generation](seq-diagrams/yearly-report-generation.svg)
+* [6.1. Road warrior initiated CRUD](#road-warrior-initiated-crud)
+* [6.2 Notification Reception]()
+* [6.3 Yearly Report Generation](#yearly-report-generation)
     </td>
  </tr>
 </table>
@@ -194,3 +194,27 @@ Architectural Style: Service Oriented?
 Architectural Style: Service Oriented
 
 #### Activity Summarizer
+
+# Sequence Diagrams
+
+The following sequence diagrams demonstrate how core operations are carried out end-to-end, as a means of better understanding of the architecture.
+
+## Road Warrior Initiated CRUD
+
+![Road Warrior Initiated CRUD Sequence Diagram](seq-diagrams/road-warrior-initiated-crud.svg)
+
+The corresponding diagram for the alternative architecture considered is below
+
+![Road Warrior Initiated CRUD Sequence Diagram - Alternative](seq-diagrams/road-warrior-initiated-crud-alt.svg)
+
+[Back to Contents](#contents)
+
+## Travel Update Reception
+
+[Back to Contents](#contents)
+
+## Yearly Report Generation
+
+![Yearly Report Generation](seq-diagrams/yearly-report-generation.svg)
+
+[Back to Contents](#contents)
