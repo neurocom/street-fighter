@@ -21,13 +21,13 @@ loosely coupled and can be deployed independently there are a perfect fit for su
 ## Justification:
 
 Adopting microservices architectural style we feel that the specialized database per service should be the preferred approach,
-since specialized databases excel in their targeted domains. Therefore we should target databases that fit the use cases, data requirements, 
-and performance considerations of the each microservice.
+since specialized databases excel in their targeted domains. Therefore, we should target databases that fit the use cases, data requirements, 
+and performance considerations of each microservice.
 
 ## Other Considerations:
 
 Use general purpose relational databases instead of targeted specialized NoSQL databases. Following our architectural principles
 that promote availability, scalability but also taking and to consideration performance and general responsiveness of the system
-as stated in requirements we concluded that the correct approach was to use specialized databases. On he same note some architectural 
+as stated in requirements we concluded that the correct approach was to use specialized databases. On the same note some architectural 
 decisions like using CQRS software architectural pattern that separates the responsibility for handling read operations (queries) 
 from write operations (commands)  made prohibitive the use of general purpose relational databases for specific workloads.

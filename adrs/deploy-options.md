@@ -16,7 +16,7 @@ require high availability can also be deployed using serverless architecture.
 
 ## Cons:
 
-- Orchestrating containers in a production environment can be complex familiriaty with tools like Kubernetes may be needed
+- Orchestrating containers in a production environment can be complex familiarity with tools like Kubernetes may be needed
 - Container networking can be complex, especially in scenarios where containers need to communicate with each other or with external services
 
 ## Justification:
