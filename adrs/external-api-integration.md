@@ -24,9 +24,9 @@ using for example different programming languages to build these components (ada
 ## Justification:
 
 By offloading tasks asynchronously to dedicated components that interface with external APIS, the system can continue 
-being responsive and available without waiting for the completion of the tasks. Also it promotes loose coupling between 
+being responsive and available without waiting for the completion of the tasks. Also, it promotes loose coupling between 
 system components. Each component can operate independently, unaware of the specifics of the other components therefore
 failure to communicate with external systems do not affect the entire system, or it is responsiveness since events originated 
-from other sources should be able to find their way into the system. Finally system can scale effortlessly by accommodating new
+from other sources should be able to find their way into the system. Finally, system can scale effortlessly by accommodating new
 external APIs without changes in its core architecture functionality. 
 

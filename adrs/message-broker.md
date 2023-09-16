@@ -8,7 +8,7 @@ and coordination of events among different parts of a system
 
 ## Pros:
 
-- Facilitates asynchronous communication between different parts of a system, declouping services (loose coupling, fault tolerance)
+- Facilitates asynchronous communication between different parts of a system, decoupling services (loose coupling, fault tolerance)
 - Absorb traffic spikes (availability)
 - Allows for easy scale of the system (scalability)
 - Decouple the sender of a message (producer) from its receiver (consumer) (interoperability)

@@ -24,7 +24,7 @@ mobile apps, which supports simple CRUD operations and revolves more about data/
 therefore is dynamic in nature.  
 - RPC-oriented solution are commonly used in communication between back-end systems and is less common when intercating with
 front-end clients since commonly revolve around methods/action oriented API, and usually are statically defined ahead of time 
-by some IDL. Therefore designing an API that is more data-centric is a better fit for REST architectural style 
+by some IDL. Therefore, designing an API that is more data-centric is a better fit for REST architectural style 
 
 
 ## Other Considerations:
