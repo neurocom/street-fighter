@@ -211,6 +211,8 @@ The corresponding diagram for the alternative architecture considered is below
 
 ## Travel Update Reception
 
+![Travel Update Reception](seq-diagrams/travel-update-reception.svg)
+
 [Back to Contents](#contents)
 
 ## Yearly Report Generation
