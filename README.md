@@ -8,7 +8,7 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
 <table border="0">
 
  <tr style="vertical-align:top">
-    <td>
+    <td valign="top" style="vertical-align:top">
 
 **[1. About us](#about-us)**
 
@@ -38,7 +38,7 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
 * [5.3 Yearly Report Generation](#yearly-report-generation)
 
 </td>
-<td>
+<td valign="top" style="vertical-align:top">
 
 **[6. ADRs](#adrs)**
 * [ADR01 API-Gateway](adrs/api-gateway.md)
