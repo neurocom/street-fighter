@@ -177,7 +177,7 @@ Top:
 Others considered:
  Fault tolerance: Not deemed important because 
 
-Architectural Style: Event Driven (Pipeline?)
+Architectural Style: Hybrid: Microservices - Event Driven Architecture
 
 [Back to Contents](#contents)
 
