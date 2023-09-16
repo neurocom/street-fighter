@@ -182,9 +182,7 @@ Based on the characteristics identified, and using the provided template, we cam
 
 ![Architecture Selector](assets/architecture-style-selector.png)
 
-We decided to select the event-driven architecture because it both scores well in most of our characteristics and fits well with asynchronous processing which we think is central to our application. 
-
-TODO: Link to  system wide ADR
+We decided to select a [hybrid microservices event-driven architecture](adrs/hybrid.md) because it both scores well in most of our characteristics and fits well with asynchronous processing which we think is central to our application. 
 
 [Back to Contents](#contents)
 
