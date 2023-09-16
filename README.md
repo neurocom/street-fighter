@@ -80,7 +80,9 @@ Which led to the identification of the initial building blocks of the system
 
 ## Quantum Identification
 
-Based on the initial building blocks, we then utilized the quantum concept (https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch07.html#sec-quantum-def) during our analysis to identify the different parts of the platform that serve different needs and demonstrate possibly different characteristics.
+We considered in our early discussions that there are several parts in the application that should exhibit different characteristics (please see also [below](#system-architecture)).
+
+Based on this observation and the initial building blocks, we utilized the quantum concept (https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch07.html#sec-quantum-def) during our analysis to identify the different parts of the platform that serve different needs and demonstrate those characteristics.
 
 This the final list along with each quantum responsibilities 
 
@@ -111,7 +113,6 @@ This the final list along with each quantum responsibilities
 
 ## Overall Architecture
 
-
 ### Drivers
 
 #### Key Metrics
@@ -141,35 +142,34 @@ Email parsing, if we consider the 'share your mailbox approach' are much more ch
 
 ### Overall Architecture Characteristics
 
-Given the above we have identified the following top four architecture characteristics:
+Given the above we have identified the following top three architecture characteristics:
 
-* Availability: Since the 
-* Interoperability:
-* Scalability:
-* Configurability:
+* Availability: Since the application must be available to ensure the best customer experience
+* Interoperability: Since we need to interoperate with a lot of travel agents at both national and international level
+* Scalability: Since we both plan to expand and anticipate periods with higher traffic 
+* Configurability: Since this will be an international application with different time zones, currencies, confirmation email languages etc. etc.
 
-We additionally considered 
+Additional applicable characteristics that we considered were:
 
+* Performance especially with regard to external information sources: We decided to address it in the quantum level
+* Deployability: To allow us to quickly onboard new travel agents and reservation types. This will be aided by allowing each quantum to be deployed separately (and possibly in parallel).
+* Fault Tolerance: To allow the system to operate in case of e.g. network issues with external agents / travel systems and/or email providers. We consider that we can address this issue with the CRUD operation provided to the end user as well as the option to parse email updates on top of confirmation emails.
+* Data Consistency: To avoid false notifications to alarm the user or miss important information. Again, we decided to address this issue in the corresponding quanta.
+* Security, we did not identify a specific security requirement (apart from GDPR which we addressed in the analytics quantum) and email sharing which we expect to be standardized.
 
 ### Selected Architecture
 
-Apart from quantum characteristics, the system must also demonstrate characteristics as a whole. We selected the following:
+Based on the characteristics identified, and using the provided template, we came up with the following top matching architectures:
 
-Top:
-Reliability: Because we do not want customers rushing to the airport due to a false alarm
-Scalability: To support future growth
-*Performance*????: To honour the required SLAs despite large number of moving parts with different characteristics
+![Architecture Selector](assets/architecture-style-selector.png)
 
-Others considered:
-Security, which we considered as implicit in the solution
-
-Since we have several quanta with different performance characteristics, and considering the system as a whole, we decided to choose a distributed, event-driven architecture.
+We decided to select the event-driven architecture because it both scores well in most of our characteristics and fits well with asynchronous processing which we think is central to our application. 
 
 TODO: Link to  system wide ADR
 
 [Back to Contents](#contents)
 
-## Quantum Architectures
+## Quanta Architectures
 
 Note: Critical path 5 min - Availability + End to end performance
 We then focused on each quantum and discussed the characteristics that it should demonstrate. Here is what we came up with:
