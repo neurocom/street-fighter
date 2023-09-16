@@ -16,9 +16,8 @@ We have decided to implement the mail polling using Serverless Lambda Functions 
 
 ## Cons
 
-    Complexity: Implementing email polling with Serverless Lambda Functions may introduce complexity in managing event-driven workflows, especially when dealing with complex email protocols and error handling.
-
-    Function Execution Limits: Lambda Functions have execution time limits and resource constraints. Long-running email polling tasks may require careful design to fit within these constraints.
+- Complexity: Implementing email polling with Serverless Lambda Functions may introduce complexity in managing event-driven workflows, especially when dealing with complex email protocols and error handling.
+- Function Execution Limits: Lambda Functions have execution time limits and resource constraints. Long-running email polling tasks may require careful design to fit within these constraints.
 
 ## Justification
 
