@@ -1,7 +1,7 @@
 # Analytics Capture Quantum
 The analytics capture capability is responsible for monitoring the application's usage, gathering information regarding all trip events and combining this information with third party analytics sources that are available as well as gathering baselines regarding industry trends. Using the Analytics Capture, we can  
 - Provide the "end-of-year" summary report to the Road Warriors.
-- Compare the adoption of the service by teservation type and destination compared to industry baselines.
+- Compare the adoption of the service by reservation type and destination compared to industry baselines.
 - Create dashboards on total system usage per use case  
 - Create datamarts with the users preferences per resevation type, airline, rental company etc.
 In the future, we should use the Analytics Capture data as a platform for providing insights to companies working in the travel sector. Another possible commercial use is using the affiliate programs of specific vendors when users are sharing their trips to others or via social media   
