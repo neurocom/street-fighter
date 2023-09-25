@@ -36,6 +36,8 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
 
 **[6. ADRs](#list-of-architecture-decision-records-adrs)**
 
+**[7. Resources](#resources)**
+
 </td>
  </tr>
 </table>
@@ -297,5 +299,14 @@ The following list contains architecture decision records (ADRs) created as part
 * [ADR14 Availability Deploy Concerns](adrs/availability-deploy-concerns.md)
 * [ADR15 Monitoring](adrs/monitoring.md)
 * [ADR16 Mail Polling](adrs/mail_polling.md)
+
+[Back to Contents](#contents)
+
+## Resources
+
+- [Previous O'Reilly Architectural Katas](https://github.com/tekiegirl/SoftwareArchitectureResources/blob/main/Resources/OReillyKata.md)
+- [Fundamentals of Software Architecture](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+- [Building Microservices](https://learning.oreilly.com/library/view/building-microservices-2nd/9781492034018/)
+- [Software Architecture: The Hard Parts](https://learning.oreilly.com/library/view/software-architecture-the/9781492086888/)
 
 [Back to Contents](#contents)
