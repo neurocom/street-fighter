@@ -31,8 +31,6 @@ The goal of the challenge is to enable Road Warrior, a startup aspiring to be a 
     * [4.2.3. Travel Updates Receiver](#travel-updates-receiver)
     * [4.2.4. Email Receiver](#email-receiver)
     * [4.2.5. Analytics Capture](#analytics-capture)
-</td>
-<td valign="top" style="vertical-align:top">
 
 **[5. Deployment](#deployment)**
 
@@ -271,8 +269,11 @@ It becomes an even more attractive choice for our system since we can setup and 
 which complements container orchestration handling of Kubernetes by addressing service-to-service communication,
 security, and observability challenges ([ADR15 Monitoring](adrs/monitoring.md))
 
+Moreover, it makes sense to utilize a managed Kubernetes service to deploy our system in the cloud using Kubernetes clusters across multiple geographic regions or data centers to achieve objectives like high availability, fault tolerance, and reduced latency. ([ADR14 Availability Deploy Concerns](adrs/availability-deploy-concerns.md))
 
-Finally, it makes sense to utilize a managed Kubernetes service to deploy our system in the cloud using Kubernetes clusters across multiple geographic regions or data centers to achieve objectives like high availability, fault tolerance, and reduced latency. ([ADR14 Availability Deploy Concerns](adrs/availability-deploy-concerns.md))
+The following figure provides an early glimpse into our deployment strategy on a cloud environment, where main components and structure are outlined here as a point of reference, as we shall continue to refine and enhance our approach.
+
+![Cloud deployment](assets/deploy-strategy.png)
 
 [Back to Contents](#contents)
 
